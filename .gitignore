@@ -4,3 +4,14 @@
 *.jar
 *.war
 *.ear
+
+# generated files
+bin/
+.idea/
+
+# Local configuration file (sdk path, etc) #
+local.properties
+
+# Eclipse project files #
+.classpath
+.project
