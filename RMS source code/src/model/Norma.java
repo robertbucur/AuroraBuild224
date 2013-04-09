@@ -8,6 +8,7 @@ package model;
  * @see CadruDidactic
  */
 public class Norma {
+    private int id;
     private int oreCurs;
     private int oreSeminar;
     private int oreLaborator;
@@ -47,5 +48,30 @@ public class Norma {
 
     public void setOreSeminar(int oreSeminar) {
         this.oreSeminar = oreSeminar;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Norma norma = (Norma) o;
+
+        if (id != norma.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
     }
 }

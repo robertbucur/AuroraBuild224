@@ -10,6 +10,7 @@ import java.util.Set;
  * @see ResursaUmana
  */
 public class PersonalAdministrativ extends ResursaUmana {
+    private int id;
 
     /**
      * Constructor pentru clasa <code>PersonalAdministrativ</code>.
@@ -22,5 +23,26 @@ public class PersonalAdministrativ extends ResursaUmana {
      */
     public PersonalAdministrativ(String nume, String prenume, int numarTelefon, String email, Set<String> domeniiInteres) {
         super(nume, prenume, numarTelefon, email, domeniiInteres);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        PersonalAdministrativ that = (PersonalAdministrativ) o;
+
+        if (id != that.id) return false;
+
+        return true;
     }
 }

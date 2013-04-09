@@ -7,6 +7,7 @@ package model;
  * @version 1.0, 3 Aprilie 2013
  */
 public  class ResursaFinanciara implements Resursa {
+    private int id;
     private String sursaFonduri;
     private int cuantumFonduri;
     private String moneda;
@@ -46,5 +47,25 @@ public  class ResursaFinanciara implements Resursa {
 
     public void setSursaFonduri(String sursaFonduri) {
         this.sursaFonduri = sursaFonduri;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ResursaFinanciara that = (ResursaFinanciara) o;
+
+        if (id != that.id) return false;
+
+        return true;
     }
 }

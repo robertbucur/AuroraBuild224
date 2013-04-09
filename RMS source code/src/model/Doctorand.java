@@ -10,6 +10,7 @@ import java.util.Set;
  * @see ResursaUmana
  */
 public class Doctorand extends ResursaUmana {
+    private int id;
     private String specializare;
 
     /**
@@ -32,5 +33,26 @@ public class Doctorand extends ResursaUmana {
 
     public void setSpecializare(String specializare) {
         this.specializare = specializare;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Doctorand doctorand = (Doctorand) o;
+
+        if (id != doctorand.id) return false;
+
+        return true;
     }
 }

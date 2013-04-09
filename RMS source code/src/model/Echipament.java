@@ -7,6 +7,7 @@ package model;
  * @version 1.0, 3 Aprilie 2013
  */
 public class Echipament implements ResursaLogistica{
+    private int id;
     private String tipEchipament;
     private String modelEchipament;
 
@@ -35,5 +36,30 @@ public class Echipament implements ResursaLogistica{
 
     public void setTipEchipament(String tipEchipament) {
         this.tipEchipament = tipEchipament;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Echipament that = (Echipament) o;
+
+        if (id != that.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
     }
 }

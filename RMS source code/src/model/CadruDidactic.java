@@ -10,9 +10,18 @@ import java.util.Set;
  * @see ResursaUmana, Norma
  */
 public class CadruDidactic extends ResursaUmana{
+    private int id;
     private String postDidactic;
     private Norma norma;
     private boolean director;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * Constructor pentru clasa <code>CadruDidactic</code>.
@@ -52,5 +61,19 @@ public class CadruDidactic extends ResursaUmana{
 
     public void setPostDidactic(String postDidactic) {
         this.postDidactic = postDidactic;
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        CadruDidactic that = (CadruDidactic) o;
+
+        if (id != that.id) return false;
+
+        return true;
     }
 }
