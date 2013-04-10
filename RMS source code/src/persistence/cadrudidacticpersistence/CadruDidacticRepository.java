@@ -1,4 +1,4 @@
-package persistance.cadrudidacticpersistence;
+package persistence.cadrudidacticpersistence;
 
 import java.util.List;
 

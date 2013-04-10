@@ -1,4 +1,4 @@
-package persistance.cadrudidacticpersistence;
+package persistence.cadrudidacticpersistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,10 +63,10 @@ public class CadruDidacticFactory {
 	 * @return cadrul didactic cu id-ul  numarul de telefon <code>numarTelefon</code> daca exista, altfel <code>null</code>
 	 * @since version 1.0
 	 */
-	static CadruDidactic getCadruDidacticByNumarTelefon(int numarTelefon,
+	static CadruDidactic getCadruDidacticByNumarTelefon(String numarTelefon,
 			List<CadruDidactic> list) {
 		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getNumarTelefon() == numarTelefon) {
+			if (list.get(i).getNumarTelefon().equals(numarTelefon)) {
 				return list.get(i);
 			}
 		return null;

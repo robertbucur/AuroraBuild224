@@ -1,4 +1,4 @@
-package persistance;
+package persistence;
 
 /**
  * Interfata <code>Persistence</code> stabileste metodele comune

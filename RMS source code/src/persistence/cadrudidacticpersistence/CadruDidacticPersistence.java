@@ -1,4 +1,4 @@
-package persistance.cadrudidacticpersistence;
+package persistence.cadrudidacticpersistence;
 
 import java.util.List;
 
@@ -91,7 +91,7 @@ public class CadruDidacticPersistence {
 	 * @return
 	 * @since version 1.0
 	 */
-	public CadruDidactic getCadruDidacticByNumarTelefon(int numarTelefon){
+	public CadruDidactic getCadruDidacticByNumarTelefon(String numarTelefon){
 			return CadruDidacticFactory.getCadruDidacticByNumarTelefon(numarTelefon, list);
 	}
 
