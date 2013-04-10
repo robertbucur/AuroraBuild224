@@ -11,7 +11,7 @@ import java.util.Set;
 public abstract class ResursaUmana implements Resursa {
     protected String nume;
     protected String prenume;
-    protected int numarTelefon;
+    protected String numarTelefon;
     protected String email;
     protected Set<String> domeniiInteres;
 
@@ -24,7 +24,7 @@ public abstract class ResursaUmana implements Resursa {
      * @param email adresa de e-mail
      * @param domeniiInteres domeniile de interes
      */
-    public ResursaUmana(String nume, String prenume, int numarTelefon, String email, Set<String> domeniiInteres) {
+    public ResursaUmana(String nume, String prenume, String numarTelefon, String email, Set<String> domeniiInteres) {
         this.nume = nume;
         this.prenume = prenume;
         this.numarTelefon = numarTelefon;
@@ -48,11 +48,11 @@ public abstract class ResursaUmana implements Resursa {
         this.email = email;
     }
 
-    public int getNumarTelefon() {
+    public String getNumarTelefon() {
         return numarTelefon;
     }
 
-    public void setNumarTelefon(int numarTelefon) {
+    public void setNumarTelefon(String numarTelefon) {
         this.numarTelefon = numarTelefon;
     }
 

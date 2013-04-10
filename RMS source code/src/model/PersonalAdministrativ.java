@@ -21,7 +21,7 @@ public class PersonalAdministrativ extends ResursaUmana {
      * @param email          adresa de e-mail
      * @param domeniiInteres domeniile de interes
      */
-    public PersonalAdministrativ(String nume, String prenume, int numarTelefon, String email, Set<String> domeniiInteres) {
+    public PersonalAdministrativ(String nume, String prenume, String numarTelefon, String email, Set<String> domeniiInteres) {
         super(nume, prenume, numarTelefon, email, domeniiInteres);
     }
 

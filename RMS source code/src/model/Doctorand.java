@@ -23,7 +23,7 @@ public class Doctorand extends ResursaUmana {
      * @param email          adresa de e-mail
      * @param domeniiInteres domeniile de interes
      */
-    public Doctorand(String nume, String prenume, int numarTelefon, String email, Set<String> domeniiInteres) {
+    public Doctorand(String nume, String prenume, String numarTelefon, String email, Set<String> domeniiInteres) {
         super(nume, prenume, numarTelefon, email, domeniiInteres);
     }
 

@@ -34,7 +34,7 @@ public class CadruDidactic extends ResursaUmana{
      * @param email adresa de e-mail
      * @param domeniiInteres domeniile de interes
      */
-    public CadruDidactic(String nume, String prenume, int numarTelefon, String email, Set<String> domeniiInteres) {
+    public CadruDidactic(String nume, String prenume, String numarTelefon, String email, Set<String> domeniiInteres) {
         super(nume, prenume, numarTelefon, email, domeniiInteres);
         this.director = false;
     }
