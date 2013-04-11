@@ -13,7 +13,7 @@ import model.PersonalAdministrativ;
  * To change this template use File | Settings | File Templates.
  */
 public class PersonalAdministrativFactory {
-
+                                  //com
     /**
      *  Metoda intoarece un obiect de tip <code>PersonalAdministrativ</code> din containerul
      * <code>list</code> care are id-ul <code>id</code>. Daca nu exsita un astfel
