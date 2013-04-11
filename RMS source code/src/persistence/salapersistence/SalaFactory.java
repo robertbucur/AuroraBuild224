@@ -1,6 +1,5 @@
 package persistence.salapersistence;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.Sala;
