@@ -43,7 +43,7 @@ public class SalaFactory {
 	 * Daca nu exsita un astfel de obiect, metoda returneaza <code>null</code>.
 	 * 
 	 * @param codSala
-	 *           codul salii pe care o cautam
+	 *            codul salii pe care o cautam
 	 * @param list
 	 *            containerul in care se cauta
 	 * @return sala cu codul <code>codSala</code> daca exista, altfel <code>null</code>
