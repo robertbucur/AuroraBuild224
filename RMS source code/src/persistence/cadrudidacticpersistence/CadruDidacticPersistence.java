@@ -30,11 +30,11 @@ public class CadruDidacticPersistence {
 	/**
 	 * Metoda salveaza in persistenta un Cadru Didactic.
 	 * 
-	 * @param cadruDidactic Cadru Didactic ce se doreste a fi salvat
 	 * @since version 1.0
+     * @param cd
 	 */
-	public void save(CadruDidactic cadruDidactic){
-		CadruDidacticRepository.save(cadruDidactic, list);
+	public void save(CadruDidactic cd){
+		CadruDidacticRepository.save(cd, list);
 	}
 	
 	/**
