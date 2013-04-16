@@ -52,6 +52,7 @@ public class Controller {
             // aici separ domeniile de interes dupa caracterul ";" si le pun intr-un vector de String
             String[] domeniiSeparate = domeniiInteres.split(";");
             // creez Set-ul de domenii de Interes pentru CadruDidactic
+            // Initializat domeniiInteresAdd
             Set<String> domeniiInteresAdd = new HashSet<String>();
             for (int i = 0 ; i < domeniiSeparate.length; i++)
             {
