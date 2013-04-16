@@ -21,6 +21,10 @@ public class Controller {
         this.cadruDidacticPersistence = cdr;
         this.personalAdministrativPersistence = pap;
     }
+    public Controller ()
+    {
+
+    }
 
     /**
      * Adauga Cadru Didactic Nou
