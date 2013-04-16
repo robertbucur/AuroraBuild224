@@ -5,6 +5,7 @@ import model.Norma;
 import persistence.cadrudidacticpersistence.CadruDidacticPersistence;
 import persistence.personaladministrativpersistence.PersonalAdministrativPersistence;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -51,7 +52,7 @@ public class Controller {
             // aici separ domeniile de interes dupa caracterul ";" si le pun intr-un vector de String
             String[] domeniiSeparate = domeniiInteres.split(";");
             // creez Set-ul de domenii de Interes pentru CadruDidactic
-            Set<String> domeniiInteresAdd = null;
+            Set<String> domeniiInteresAdd = new HashSet<String>();
             for (int i = 0 ; i < domeniiSeparate.length; i++)
             {
                 domeniiInteresAdd.add(domeniiSeparate[i]);
@@ -64,4 +65,6 @@ public class Controller {
             return false;
         }
     }
+
+
 }
