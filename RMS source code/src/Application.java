@@ -1,5 +1,7 @@
-import gui.Controller;
-import gui.MainFrame;
+import controller.AdministratorController;
+import controller.Controller;
+import controller.LoginController;
+import gui.AdminMainFrame;
 
 import javax.swing.*;
 
@@ -33,14 +35,8 @@ public class Application {
 
             @Override
             public void run() {
-                Controller ctrl = new Controller();
-                MainFrame llw = new MainFrame(ctrl, "RMS");
-                llw.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-                llw.setSize(800, 550);
-                llw.setLocation(500, 250);
-                llw.setVisible(true);
-                llw.setResizable(true);
-
+                LoginController loginController = new LoginController();
+            
             }
         });
 
