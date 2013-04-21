@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Set;
-
 /**
  * Clasa <code>CadruDidactic</code> reprezinta un cadru didactic din cadrul departamentului.
  *
@@ -33,11 +31,14 @@ public class CadruDidactic extends ResursaUmana{
      * @param numarTelefon numarul de telefon
      * @param email adresa de e-mail
      * @param domeniiInteres domeniile de interes
+     * @param parola parola de login
      */
-    public CadruDidactic(String nume, String prenume, String numarTelefon, String email, Set<String> domeniiInteres) {
-        super(nume, prenume, numarTelefon, email, domeniiInteres);
+    public CadruDidactic(String nume, String prenume, String numarTelefon, String email, String domeniiInteres, String parola) {
+        super(nume, prenume, numarTelefon, email, domeniiInteres, parola);
         this.director = false;
     }
+
+    public CadruDidactic() {}
 
     public boolean isDirector() {
         return director;

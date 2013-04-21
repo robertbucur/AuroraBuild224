@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Set;
-
 /**
  * Reprezinta un doctorand din cadrul departamentului.
  *
@@ -17,15 +15,18 @@ public class Doctorand extends ResursaUmana {
      * Constructor pentru clasa <code>ResursaUmana</code>.
      * Celelelte atribuite vor fi initializate prin intermediul setterilor.
      *
-     * @param nume           numele
-     * @param prenume        prenumele
-     * @param numarTelefon   numarul de telefon
-     * @param email          adresa de e-mail
+     * @param nume numele
+     * @param prenume prenumele
+     * @param numarTelefon numarul de telefon
+     * @param email adresa de e-mail
      * @param domeniiInteres domeniile de interes
+     * @param parola parola de login
      */
-    public Doctorand(String nume, String prenume, String numarTelefon, String email, Set<String> domeniiInteres) {
-        super(nume, prenume, numarTelefon, email, domeniiInteres);
+    public Doctorand(String nume, String prenume, String numarTelefon, String email, String domeniiInteres, String parola) {
+        super(nume, prenume, numarTelefon, email, domeniiInteres, parola);
     }
+
+    public Doctorand() {}
 
     public String getSpecializare() {
         return specializare;

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Set;
-
 /**
  * Reprezinta o persoana care face parte din personalul administrativ al departamentului.
  *
@@ -15,15 +13,18 @@ public class PersonalAdministrativ extends ResursaUmana {
     /**
      * Constructor pentru clasa <code>PersonalAdministrativ</code>.
      * Celelelte atribuite vor fi initializate prin intermediul setterilor.
-     * @param nume           numele
-     * @param prenume        prenumele
-     * @param numarTelefon   numarul de telefon
-     * @param email          adresa de e-mail
+     * @param nume numele
+     * @param prenume prenumele
+     * @param numarTelefon numarul de telefon
+     * @param email adresa de e-mail
      * @param domeniiInteres domeniile de interes
+     * @param parola parola de login
      */
-    public PersonalAdministrativ(String nume, String prenume, String numarTelefon, String email, Set<String> domeniiInteres) {
-        super(nume, prenume, numarTelefon, email, domeniiInteres);
+    public PersonalAdministrativ(String nume, String prenume, String numarTelefon, String email, String domeniiInteres, String parola) {
+        super(nume, prenume, numarTelefon, email, domeniiInteres, parola);
     }
+
+    public PersonalAdministrativ() {}
 
     public int getId() {
         return id;

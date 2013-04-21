@@ -22,6 +22,8 @@ public class Sala implements ResursaLogistica {
         this.nrLocuri = nrLocuri;
     }
 
+    public Sala() {};
+
     public String getCodSala() {
         return codSala;
     }

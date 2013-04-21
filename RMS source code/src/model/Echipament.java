@@ -22,6 +22,8 @@ public class Echipament implements ResursaLogistica{
         this.tipEchipament = tipEchipament;
     }
 
+    public Echipament() {}
+
     public String getModelEchipament() {
         return modelEchipament;
     }

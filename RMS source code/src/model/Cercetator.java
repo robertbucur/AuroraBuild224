@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Set;
-
 /**
  * Reprezinta un cercetator din cadrul departamentului.
  *
@@ -16,15 +14,18 @@ public class Cercetator extends ResursaUmana {
      * Constructor pentru clasa <code>Cercetator</code>.
      * Celelelte atribuite vor fi initializate prin intermediul setterilor.
      *
-     * @param nume           numele
-     * @param prenume        prenumele
-     * @param numarTelefon   numarul de telefon
-     * @param email          adresa de e-mail
+     * @param nume numele
+     * @param prenume prenumele
+     * @param numarTelefon numarul de telefon
+     * @param email adresa de e-mail
      * @param domeniiInteres domeniile de interes
+     * @param parola parola de login
      */
-    public Cercetator(String nume, String prenume, String numarTelefon, String email, Set<String> domeniiInteres) {
-        super(nume, prenume, numarTelefon, email, domeniiInteres);
+    public Cercetator(String nume, String prenume, String numarTelefon, String email, String domeniiInteres, String parola) {
+        super(nume, prenume, numarTelefon, email, domeniiInteres, parola);
     }
+
+    public Cercetator() {}
 
     public int getId() {
         return id;

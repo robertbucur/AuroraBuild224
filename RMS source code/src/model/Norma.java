@@ -9,6 +9,7 @@ package model;
  */
 public class Norma {
     private int id;
+    private int idCadruDidactic; //util doar pentru persistenta
     private int oreCurs;
     private int oreSeminar;
     private int oreLaborator;
@@ -25,6 +26,8 @@ public class Norma {
         this.oreLaborator = oreLaborator;
         this.oreSeminar = oreSeminar;
     }
+
+    public Norma() {}
 
     public int getOreCurs() {
         return oreCurs;
@@ -56,6 +59,14 @@ public class Norma {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdCadruDidactic() {
+        return idCadruDidactic;
+    }
+
+    public void setIdCadruDidactic(int idCadruDidactic) {
+        this.idCadruDidactic = idCadruDidactic;
     }
 
     @Override

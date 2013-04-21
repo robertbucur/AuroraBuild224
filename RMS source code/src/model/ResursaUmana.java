@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Set;
-
 /**
  * Clasa abstracta ce reprezinta o resursa umana din cadrul departamentului.
  *
@@ -13,7 +11,8 @@ public abstract class ResursaUmana implements Resursa {
     protected String prenume;
     protected String numarTelefon;
     protected String email;
-    protected Set<String> domeniiInteres;
+    protected String domeniiInteres;
+    protected String parola;
 
     /**
      * Constructor pentru clasa <code>ResursaUmana</code>.
@@ -23,20 +22,24 @@ public abstract class ResursaUmana implements Resursa {
      * @param numarTelefon numarul de telefon
      * @param email adresa de e-mail
      * @param domeniiInteres domeniile de interes
+     * @param parola parola de login
      */
-    public ResursaUmana(String nume, String prenume, String numarTelefon, String email, Set<String> domeniiInteres) {
+    public ResursaUmana(String nume, String prenume, String numarTelefon, String email, String domeniiInteres, String parola) {
         this.nume = nume;
         this.prenume = prenume;
         this.numarTelefon = numarTelefon;
         this.email = email;
         this.domeniiInteres = domeniiInteres;
+        this.parola = parola;
     }
 
-    public Set<String> getDomeniiInteres() {
+    public ResursaUmana() {}
+
+    public String getDomeniiInteres() {
         return domeniiInteres;
     }
 
-    public void setDomeniiInteres(Set<String> domeniiInteres) {
+    public void setDomeniiInteres(String domeniiInteres) {
         this.domeniiInteres = domeniiInteres;
     }
 
@@ -70,6 +73,14 @@ public abstract class ResursaUmana implements Resursa {
 
     public void setPrenume(String prenume) {
         this.prenume = prenume;
+    }
+
+    public String getParola() {
+        return parola;
+    }
+
+    public void setParola(String parola) {
+        this.parola = parola;
     }
 
     @Override

@@ -25,6 +25,8 @@ public  class ResursaFinanciara implements Resursa {
         this.sursaFonduri = sursaFonduri;
     }
 
+    public ResursaFinanciara() {}
+
     public int getCuantumFonduri() {
         return cuantumFonduri;
     }
