@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.CadruDidactic" table="CADRE_DIDACTICE">
+	
+	<!-- din CadruDidactic -->
+		<id name="id" type="int" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="director" column="DIRECTOR" type="boolean" not-null="false" />
+		<property name="postDidactic" column="POST_DIDACTIC" type="string" not-null="false" />
+		
+		<many-to-one name="norma" column="NORMA_ID" 
+			class="model.Norma" not-null="false" cascade="none" lazy="false" />
+		
+		
+	<!-- din ResursaUmana -->	
+		<property name="nume" column="NUME" type="string" not-null="true" />
+		<property name="prenume" column="PRENUME" type="string" not-null="true" />
+		<property name="email" column="EMAIL" type="string" not-null="false" />
+		<property name="numarTelefon" column="NUMAR_TELEFON" type="string" not-null="false" />
+		<property name="parola" column="PAROLA" type="string" not-null="true" />
+		<property name="domeniiInteres" column="DOMENII_INTERES" type="string" not-null="false" />
+		
+		
+		
+	</class>
+</hibernate-mapping>

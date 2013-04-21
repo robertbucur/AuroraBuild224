@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Norma" table="NORME">
+	
+	<!-- din Norma -->
+		<id name="id" type="int" column="ID">
+			<generator class="native" />
+		</id>
+		<property name="oreCurs" column="ORE_CURS" type="int" not-null="false" />
+		<property name="oreLaborator" column="ORE_LABORATOR" type="int" not-null="false" />
+		<property name="oreSeminar" column="ORE_SEMINAR" type="int" not-null="false" />
+		
+		
+	</class>
+</hibernate-mapping>
