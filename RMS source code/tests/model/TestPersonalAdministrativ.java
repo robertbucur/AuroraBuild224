@@ -20,7 +20,7 @@ public class TestPersonalAdministrativ {
         domeniiInteres.add("domeniu2");
 
         //testez constructorul
-        PersonalAdministrativ pa = new PersonalAdministrativ("Pop", "Mircea", "0723456555", "email@domain.com", domeniiInteres);
+        PersonalAdministrativ pa = new PersonalAdministrativ("Pop", "Mircea", "0723456555", "email@domain.com", "domeniu1; domeniu2", "1234");
 
         assertNotNull(pa);
 

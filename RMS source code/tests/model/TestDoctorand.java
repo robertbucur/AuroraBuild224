@@ -2,9 +2,6 @@ package model;
 
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import static org.junit.Assert.*;
 
 /**
@@ -15,12 +12,8 @@ import static org.junit.Assert.*;
 public class TestDoctorand {
     @Test
     public void testDoctorand() {
-        Set<String> domeniiInteres = new HashSet<String>();
-        domeniiInteres.add("domeniu1");
-        domeniiInteres.add("domeniu2");
-
         //testez constructorul
-        Doctorand d = new Doctorand("Pop", "Mircea", "0723456555", "email@domain.com", domeniiInteres);
+        Doctorand d = new Doctorand("Pop", "Mircea", "0723456555", "email@domain.com", "domeniu1; domeniu2", "1234");
 
         assertNotNull(d);
 

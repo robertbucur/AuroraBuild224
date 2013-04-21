@@ -2,9 +2,6 @@ package model;
 
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import static org.junit.Assert.*;
 
 /**
@@ -15,13 +12,9 @@ import static org.junit.Assert.*;
 public class TestCadruDidactic {
     @Test
     public void testCadruDidactic() {
-        Set<String> domeniiInteres = new HashSet<String>();
-        domeniiInteres.add("domeniu1");
-        domeniiInteres.add("domeniu2");
-
         //testez constructorul
-        CadruDidactic cd1 = new CadruDidactic("Pop", "Mircea", "0723456555", "email@domain.com", domeniiInteres);
-        CadruDidactic cd2 = new CadruDidactic("Pop", "Andrei", "0735566982", "altmail@domain.com", null );
+        CadruDidactic cd1 = new CadruDidactic("Pop", "Mircea", "0723456555", "email@domain.com", "domeniu1; domeniu2", "1234");
+        CadruDidactic cd2 = new CadruDidactic("Pop", "Andrei", "0735566982", "altmail@domain.com", null, "1234" );
 
         assertNotNull(cd1);
         assertNotNull(cd2);

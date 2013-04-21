@@ -8,10 +8,10 @@ import java.util.Set;
 import static org.junit.Assert.*;
 
 /**
- * Author: Florin Mihalache
- * Date: 15.04.2013
- * Time: 17:37
- */
+* Author: Florin Mihalache
+* Date: 15.04.2013
+* Time: 17:37
+*/
 public class TestCercetator {
     @Test
     public void testCercetator() {
@@ -20,7 +20,7 @@ public class TestCercetator {
         domeniiInteres.add("domeniu2");
 
         //testez constructorul
-        Cercetator c = new Cercetator("Pop", "Mircea", "0723456555", "email@domain.com", domeniiInteres);
+        Cercetator c = new Cercetator("Pop", "Mircea", "0723456555", "email@domain.com", "domeniu1; domeniu2", "1234");
 
         assertNotNull(c);
 
