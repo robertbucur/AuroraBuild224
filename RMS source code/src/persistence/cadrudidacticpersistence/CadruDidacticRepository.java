@@ -2,6 +2,7 @@ package persistence.cadrudidacticpersistence;
 
 import model.CadruDidactic;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -112,5 +113,7 @@ class CadruDidacticRepository {
 		}
 		return ok;
 	}
+
+	
 
 }
