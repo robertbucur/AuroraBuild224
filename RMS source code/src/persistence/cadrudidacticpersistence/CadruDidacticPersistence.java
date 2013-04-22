@@ -190,4 +190,5 @@ public class CadruDidacticPersistence extends Persistence {
 				domeniuInteres);
 	}
 
+	
 }
