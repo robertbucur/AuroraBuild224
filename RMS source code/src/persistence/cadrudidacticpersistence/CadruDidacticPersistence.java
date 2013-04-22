@@ -7,7 +7,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import persistence.Persistence;
+
 import java.util.List;
+
 
 /**
  * Contine metode de modificare sau de primire de informatii a cadrelor
@@ -16,17 +19,13 @@ import java.util.List;
  * @author Mihu Dumitru-Cosmin
  * @version 2.0, 14 aprilie 2013
  */
-public class CadruDidacticPersistence {
+public class CadruDidacticPersistence extends Persistence {
 	/**
 	 * Singleton.
 	 */
 	private static CadruDidacticPersistence persistence;
-	/**
-	 * SessionFactory primit de la HIBERNATE
-	 */
-	private static SessionFactory factory = new Configuration().configure()
-			.buildSessionFactory();
-
+	
+	
 	/**
 	 * Constructorul persistentei pentru cadre didactice
 	 * 
