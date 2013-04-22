@@ -1,13 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import controller.AdministratorController;
 import controller.LoginController;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import gui.utils.RandomPass;
 
 
 /**
@@ -20,6 +17,7 @@ public class AdminPanel extends javax.swing.JPanel {
      * Creates new form AdminPanel
      */
     public AdminPanel(LoginController lcontroller,AdministratorController controller,String loggedUser,AdminMainFrame amf) {
+        generator = new RandomPass(6);
         this.controller = controller;
         this.loginController = lcontroller;
         this.loggedUser = loggedUser;
@@ -68,7 +66,7 @@ public class AdminPanel extends javax.swing.JPanel {
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldInterese = new javax.swing.JTextField();
         jButtonAdaugaRU = new javax.swing.JButton();
-        jButtonRenuntaRU = new javax.swing.JButton();
+        jButtonGolesteCampuriRU = new javax.swing.JButton();
         jLabelSeAdaugaUn = new javax.swing.JLabel();
         jRadioButtonCadruDidactic = new javax.swing.JRadioButton();
         jRadioButtonDoctorand = new javax.swing.JRadioButton();
@@ -206,8 +204,13 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
-        jButtonRenuntaRU.setText("Golire campuri");
-        jButtonRenuntaRU.setToolTipText("Goleste toate campurile completate");
+        jButtonGolesteCampuriRU.setText("Golire campuri");
+        jButtonGolesteCampuriRU.setToolTipText("Goleste toate campurile completate");
+        jButtonGolesteCampuriRU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGolesteCampuriRUActionPerformed(evt);
+            }
+        });
 
         jLabelSeAdaugaUn.setText("Se adauga un:");
 
@@ -309,7 +312,7 @@ public class AdminPanel extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAdaugaRU, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonRenuntaRU, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonGolesteCampuriRU, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelRULayout.createSequentialGroup()
                         .addGap(265, 265, 265)
                         .addGroup(jPanelRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,7 +379,7 @@ public class AdminPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanelRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAdaugaRU)
-                    .addComponent(jButtonRenuntaRU))
+                    .addComponent(jButtonGolesteCampuriRU))
                 .addContainerGap())
         );
 
@@ -746,12 +749,14 @@ public class AdminPanel extends javax.swing.JPanel {
 
     private void jButtonAdaugaRUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdaugaRUActionPerformed
         try{
-            this.controller.numeMetoda(jTextFieldNume.getText(),
+            this.controller.addCadruDidactic(jTextFieldNume.getText(),
                                         jTextFieldPrenume.getText(),
                                         jTextFieldTelefon.getText(),
                                         jTextFieldEmail.getText(),
                                         jTextFieldInterese.getText(),
-                                        "parola");
+                                        generator.nextPassword(),
+                                        jTextFieldPostOcupat.getText(),
+                                        jCheckBoxDirectorDepartament.isSelected());
             //JOptionPane.showMessageDialog(this, "mesaj", "asd", JOptionPane.ERROR_MESSAGE);
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "asd", JOptionPane.ERROR_MESSAGE);
@@ -785,6 +790,17 @@ public class AdminPanel extends javax.swing.JPanel {
         loginController.makeVisibleLoginFrame();
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
+    private void jButtonGolesteCampuriRUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGolesteCampuriRUActionPerformed
+        jTextFieldNume.setText("");
+        jTextFieldPrenume.setText("");
+        jTextFieldTelefon.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldInterese.setText("");
+        jTextFieldPostOcupat.setText("");
+        jTextFieldSpecializareDoctorand.setText("");
+        jCheckBoxDirectorDepartament.setSelected(false);
+    }//GEN-LAST:event_jButtonGolesteCampuriRUActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupRL;
     private javax.swing.ButtonGroup buttonGroupRU;
@@ -792,11 +808,11 @@ public class AdminPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButtonAdaugaRF;
     private javax.swing.JButton jButtonAdaugaRU;
     private javax.swing.JButton jButtonAdaugaSala;
+    private javax.swing.JButton jButtonGolesteCampuriRU;
     private javax.swing.JButton jButtonLogout;
     private javax.swing.JButton jButtonRenuntaAddEchipament;
     private javax.swing.JButton jButtonRenuntaAddSala;
     private javax.swing.JButton jButtonRenuntaRF;
-    private javax.swing.JButton jButtonRenuntaRU;
     private javax.swing.JCheckBox jCheckBoxDirectorDepartament;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -856,6 +872,7 @@ public class AdminPanel extends javax.swing.JPanel {
     private LoginController loginController;
     private String loggedUser;
     private AdminMainFrame amf;
+    private RandomPass generator;
     
     
     public JTable getTableRU(){
