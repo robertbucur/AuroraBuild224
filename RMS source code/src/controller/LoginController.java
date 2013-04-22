@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import gui.AdminMainFrame;
 import gui.LoginFrame;
 import java.util.Arrays;
 import javax.swing.WindowConstants;
-import model.ResursaUmana;
+
 
 /**
  *
@@ -22,7 +18,7 @@ public class LoginController {
         
         loginFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         loginFrame.setResizable(false);
-        loginFrame.setLocationRelativeTo(null);
+        loginFrame.setLocationRelativeTo(null);//centrarea pe ecran
         loginFrame.setVisible(true);    
     }
     
@@ -31,19 +27,20 @@ public class LoginController {
       */        
     
     //MACHETA
-    public void login(String username,char[] password) throws Exception{
+    public void login(String username,String password) throws Exception{
         /*
          * metoda trebuie sa verifice daca userul si parola sunt corecte si sa 
          * creeze fereastra corespunzatoare celui care s-a loghat sau sa arunce o 
          * exceptie in cazul in care autentificarea nu s-a realizat si care fereastra de loghin 
          * o sa o prinda si o sa o afiseze. mesajul trebuie sa fie corespunzator
          */
-        char[] pass ={'a','d','m','i','n'};//parola hardcodata pt teste
-        if(username.equals("admin") && Arrays.equals(pass,password)){
-            loginFrame.setVisible(false);
+        String pass = "admin";//parola hardcodata pt teste
+        if(username.equals("admin") && password.equals(pass)){
+            loginFrame.setVisible(false);//se ascunde fereastra de login dupa autentificarea cu succes (nu se distruge)
             AdministratorController administratorController = new AdministratorController();
             AdminMainFrame adminMainFrame = new AdminMainFrame(this,administratorController, "mury");
-        }else throw new Exception("ceva");
+            
+        }else throw new Exception("o exceptie....");
         
         
     }

@@ -118,7 +118,9 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         try{
-            loginController.login(jTextFieldUsername.getText(), jPasswordField.getPassword());
+            char[] pass = jPasswordField.getPassword();
+            String passFromChar = new String(pass);
+            loginController.login(jTextFieldUsername.getText(), passFromChar);
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
         }

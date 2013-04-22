@@ -12,7 +12,7 @@ import java.awt.*;
 public class AdminMainFrame extends JFrame {
     private AdministratorController controller;
     private LoginController loginController;
-    private JPanel adminPanel;  
+    public JPanel adminPanel;  
 
     public AdminMainFrame(LoginController loginController,AdministratorController aController, String userName){
         setTitle("RMS - Administrator mode");

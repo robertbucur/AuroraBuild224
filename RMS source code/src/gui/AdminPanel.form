@@ -238,16 +238,12 @@
                                   <Component id="jTextFieldPostOcupat" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jCheckBoxDirectorDepartament" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jTextFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
@@ -369,7 +365,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonRenuntaRU">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Renunta"/>
+                <Property name="text" type="java.lang.String" value="Golire campuri"/>
                 <Property name="toolTipText" type="java.lang.String" value="Goleste toate campurile completate"/>
               </Properties>
             </Component>

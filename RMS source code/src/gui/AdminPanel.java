@@ -7,6 +7,7 @@ package gui;
 import controller.AdministratorController;
 import controller.LoginController;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 
 /**
@@ -205,7 +206,7 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
-        jButtonRenuntaRU.setText("Renunta");
+        jButtonRenuntaRU.setText("Golire campuri");
         jButtonRenuntaRU.setToolTipText("Goleste toate campurile completate");
 
         jLabelSeAdaugaUn.setText("Se adauga un:");
@@ -361,14 +362,11 @@ public class AdminPanel extends javax.swing.JPanel {
                         .addGroup(jPanelRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelPostOcupat)
                             .addComponent(jTextFieldPostOcupat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBoxDirectorDepartament))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jCheckBoxDirectorDepartament))))
                 .addGroup(jPanelRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRULayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEmail)))
+                    .addGroup(jPanelRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelEmail))
                     .addGroup(jPanelRULayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jPanelRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -748,7 +746,13 @@ public class AdminPanel extends javax.swing.JPanel {
 
     private void jButtonAdaugaRUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdaugaRUActionPerformed
         try{
-            JOptionPane.showMessageDialog(this, "mesaj", "asd", JOptionPane.ERROR_MESSAGE);
+            this.controller.numeMetoda(jTextFieldNume.getText(),
+                                        jTextFieldPrenume.getText(),
+                                        jTextFieldTelefon.getText(),
+                                        jTextFieldEmail.getText(),
+                                        jTextFieldInterese.getText(),
+                                        "parola");
+            //JOptionPane.showMessageDialog(this, "mesaj", "asd", JOptionPane.ERROR_MESSAGE);
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "asd", JOptionPane.ERROR_MESSAGE);
         }
@@ -852,4 +856,9 @@ public class AdminPanel extends javax.swing.JPanel {
     private LoginController loginController;
     private String loggedUser;
     private AdminMainFrame amf;
+    
+    
+    public JTable getTableRU(){
+        return jTableRU;
+    }
 }
