@@ -1,6 +1,7 @@
 package controller;
 
 import model.CadruDidactic;
+import model.Norma;
 import model.validators.CadruDidacticValidator;
 import model.validators.Validator;
 import persistence.cadrudidacticpersistence.CadruDidacticPersistence;
@@ -40,6 +41,7 @@ public class AdministratorController extends CommonController {
         CadruDidactic cadruDidactic = new CadruDidactic(nume, prenume, numarTelefon, email, domeniiInteres, parola);
         cadruDidactic.setPostDidactic(postDidactic);
         cadruDidactic.setDirector(director);
+        cadruDidactic.setNorma(new Norma(0, 0, 0));  //norma va fi importata ulterior, initial e 0
 
         Validator validator = new CadruDidacticValidator();
         if (validator.validate(cadruDidactic)) {
