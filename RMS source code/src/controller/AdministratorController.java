@@ -30,7 +30,7 @@ public class AdministratorController extends CommonController {
      * @param director
      * @return id-ul cadrului didactic tocmai salvat in caz de succes, altfel -1
      */
-    public int addCadruDidactic(String nume,
+    public CadruDidactic addCadruDidactic(String nume,
                                     String prenume,
                                     String numarTelefon,
                                     String email,
@@ -45,9 +45,11 @@ public class AdministratorController extends CommonController {
 
         Validator validator = new CadruDidacticValidator();
         if (validator.validate(cadruDidactic)) {
-            return cadruDidacticPersistence.save(cadruDidactic);
+            int result = cadruDidacticPersistence.save(cadruDidactic);
+            if (result != -1)
+                return cadruDidactic;
         }
 
-        return -1;
+        return null;
     }
 }
