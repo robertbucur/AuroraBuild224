@@ -1,5 +1,6 @@
 package controller;
 
+import controller.tablemodel.ResursaUmanaTableModel;
 import model.ResursaUmana;
 import persistence.cadrudidacticpersistence.CadruDidacticPersistence;
 
@@ -15,9 +16,11 @@ import java.util.List;
  */
 public class CommonController {
     private CadruDidacticPersistence cadruDidacticPersistence;
+    private ResursaUmanaTableModel resursaUmanaTableModel;
 
     public CommonController() {
         cadruDidacticPersistence = CadruDidacticPersistence.instance();
+        resursaUmanaTableModel = new ResursaUmanaTableModel(getAllResursaUmana());
     }
 
     /**
@@ -32,5 +35,13 @@ public class CommonController {
         list.addAll(cadruDidacticPersistence.getAllCadruDidactic());
         //TODO: trebuie actualizata pe masura ce vor fi create metodele necesare din persistence
         return list;
+    }
+
+    /**
+     * Returneaza <code>ResursaUmanaTableModel</code>
+     * @return
+     */
+    public ResursaUmanaTableModel getResursaUmanaTableModel() {
+        return resursaUmanaTableModel;
     }
 }
