@@ -1,6 +1,7 @@
 package gui;
 
 import controller.AdministratorController;
+import controller.CommonController;
 import controller.LoginController;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -19,6 +20,7 @@ public class AdminPanel extends javax.swing.JPanel {
     public AdminPanel(LoginController lcontroller,AdministratorController controller,String loggedUser,AdminMainFrame amf) {
         generator = new RandomPass(6);
         this.controller = controller;
+        this.commonController = new CommonController();
         this.loginController = lcontroller;
         this.loggedUser = loggedUser;
         this.amf = amf;
@@ -30,6 +32,7 @@ public class AdminPanel extends javax.swing.JPanel {
         jCheckBoxDirectorDepartament.setVisible(false);
         jLabelSpecializareDoctorand.setVisible(false);
         jTextFieldSpecializareDoctorand.setVisible(false);
+        jTableRU.setModel(commonController.getResursaUmanaTableModel());
         //pentru RL
         jTextFieldCodSalaRL.setEditable(false);
         jTextFieldNrLocuriRL.setEditable(false);
@@ -713,7 +716,9 @@ public class AdminPanel extends javax.swing.JPanel {
     private void jTextFieldSursaFonduriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSursaFonduriActionPerformed
         // TODO add your handlving code here:
     }//GEN-LAST:event_jTextFieldSursaFonduriActionPerformed
-//pentru ResurseUmane
+
+    //pentru ResurseUmane
+    
     private void jRadioButtonPersonalAdministrativActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPersonalAdministrativActionPerformed
         jLabelPostOcupat.setVisible(false);
         jTextFieldPostOcupat.setVisible(false);
@@ -748,7 +753,8 @@ public class AdminPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jRadioButtonCadruDidacticActionPerformed
 
     private void jButtonAdaugaRUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdaugaRUActionPerformed
-        try{
+        if(jRadioButtonCadruDidactic.isSelected()){
+            try{
             this.controller.addCadruDidactic(jTextFieldNume.getText(),
                                         jTextFieldPrenume.getText(),
                                         jTextFieldTelefon.getText(),
@@ -757,12 +763,26 @@ public class AdminPanel extends javax.swing.JPanel {
                                         generator.nextPassword(),
                                         jTextFieldPostOcupat.getText(),
                                         jCheckBoxDirectorDepartament.isSelected());
-            //JOptionPane.showMessageDialog(this, "mesaj", "asd", JOptionPane.ERROR_MESSAGE);
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage(), "asd", JOptionPane.ERROR_MESSAGE);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "asd", JOptionPane.ERROR_MESSAGE);
+            }
         }
+        if(jRadioButtonCercetator.isSelected()){
+            
+        }
+        if(jRadioButtonPersonalAdministrativ.isSelected()){
+            
+        }
+        if(jRadioButtonDoctorand.isSelected()){
+            
+        }
+        commonController.getResursaUmanaTableModel().update();
+        //this.updateRUtable();
+        this.clearFieldsRU();
     }//GEN-LAST:event_jButtonAdaugaRUActionPerformed
+    
     //pentru ResurseLogistice:
+    
     private void jRadioButtonAdaugaEchipamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAdaugaEchipamentActionPerformed
         jTextFieldCodSalaRL.setEditable(false);
         jTextFieldNrLocuriRL.setEditable(false);
@@ -791,14 +811,7 @@ public class AdminPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonLogoutActionPerformed
 
     private void jButtonGolesteCampuriRUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGolesteCampuriRUActionPerformed
-        jTextFieldNume.setText("");
-        jTextFieldPrenume.setText("");
-        jTextFieldTelefon.setText("");
-        jTextFieldEmail.setText("");
-        jTextFieldInterese.setText("");
-        jTextFieldPostOcupat.setText("");
-        jTextFieldSpecializareDoctorand.setText("");
-        jCheckBoxDirectorDepartament.setSelected(false);
+        this.clearFieldsRU();
     }//GEN-LAST:event_jButtonGolesteCampuriRUActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -873,9 +886,25 @@ public class AdminPanel extends javax.swing.JPanel {
     private String loggedUser;
     private AdminMainFrame amf;
     private RandomPass generator;
+    private CommonController commonController;
     
     
     public JTable getTableRU(){
         return jTableRU;
     }
+    public void updateRUtable(){
+        jTableRU.setModel(commonController.getResursaUmanaTableModel());
+       
+    }
+    private void clearFieldsRU(){
+        jTextFieldNume.setText("");
+        jTextFieldPrenume.setText("");
+        jTextFieldTelefon.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldInterese.setText("");
+        jTextFieldPostOcupat.setText("");
+        jTextFieldSpecializareDoctorand.setText("");
+        jCheckBoxDirectorDepartament.setSelected(false);
+    }
+    
 }
