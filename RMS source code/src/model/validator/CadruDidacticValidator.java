@@ -1,4 +1,4 @@
-package model.validators;
+package model.validator;
 
 /**
  * <code>Validator</code> pentru obiectul CadruDidactic

@@ -2,8 +2,8 @@ package controller;
 
 import model.CadruDidactic;
 import model.Norma;
-import model.validators.CadruDidacticValidator;
-import model.validators.Validator;
+import model.validator.CadruDidacticValidator;
+import model.validator.Validator;
 import persistence.cadrudidacticpersistence.CadruDidacticPersistence;
 
 /**

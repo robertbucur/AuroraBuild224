@@ -1,4 +1,4 @@
-package model.validators;
+package model.validator;
 
 /**
  * Interfata <code>Validator</code> stabileste metodele comune
