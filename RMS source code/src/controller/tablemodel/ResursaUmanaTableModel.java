@@ -55,4 +55,8 @@ public class ResursaUmanaTableModel extends AbstractTableModel {
         }
         return null;
     }
+
+    public List<ResursaUmana> getList() {
+        return list;
+    }
 }

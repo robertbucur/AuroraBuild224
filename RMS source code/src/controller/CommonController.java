@@ -44,4 +44,14 @@ public class CommonController {
     public ResursaUmanaTableModel getResursaUmanaTableModel() {
         return resursaUmanaTableModel;
     }
+
+    /**
+     * Reface modelul cu datele din BD
+     */
+    public void updateResursaUmanaTableModel() {
+        List<ResursaUmana> list = resursaUmanaTableModel.getList();
+        list.clear();
+        list.addAll(getAllResursaUmana());
+        resursaUmanaTableModel.fireTableDataChanged();
+    }
 }

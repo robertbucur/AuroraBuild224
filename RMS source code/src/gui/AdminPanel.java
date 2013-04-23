@@ -3,9 +3,9 @@ package gui;
 import controller.AdministratorController;
 import controller.CommonController;
 import controller.LoginController;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import gui.utils.RandomPass;
+
+import javax.swing.*;
 
 
 /**
@@ -776,7 +776,7 @@ public class AdminPanel extends javax.swing.JPanel {
         if(jRadioButtonDoctorand.isSelected()){
             
         }
-        commonController.getResursaUmanaTableModel().update();
+        commonController.updateResursaUmanaTableModel();
         //this.updateRUtable();
         this.clearFieldsRU();
     }//GEN-LAST:event_jButtonAdaugaRUActionPerformed
