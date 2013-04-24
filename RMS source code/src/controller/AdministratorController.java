@@ -124,4 +124,19 @@ public class AdministratorController extends CommonController {
         return null;
 
     }
+
+    /**
+     * Modificarea unui cadru didactic
+     * @param cadruDidactic
+     */
+    public CadruDidactic updateCadruDidactic (CadruDidactic cadruDidactic)
+    {
+        Validator validator = new CadruDidacticValidator();
+        if (validator.validate(cadruDidactic)) {
+            boolean ok = cadruDidacticPersistence.update(cadruDidactic);
+            if (ok == true)
+                return cadruDidactic;
+        }
+        return null;
+    }
 }
