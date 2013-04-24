@@ -150,7 +150,7 @@ public class AdministratorController extends CommonController {
         if (validator.validate(personalAdministrativ)){
            //boolean    ok = personalAdministrativPersistence.update(personalAdministrativ);
            // if (ok == true)
-               // return personalAdministrativ;
+                return personalAdministrativ;
         }
         return null;
         }
@@ -164,7 +164,7 @@ public class AdministratorController extends CommonController {
         if(validator.validate(echipament)){
            // boolean ok = echipamentPersistence.update(echipament);
            //  if(ok == true)
-                // return echipament;
+                 return echipament;
         }
         return null;
 
@@ -179,7 +179,7 @@ public class AdministratorController extends CommonController {
         if(validator.validate(sala)){
            // boolean ok = salaPersistence.update(sala);
            // if(ok == true)
-               // return sala;
+                return sala;
         }
         return null;
     }
