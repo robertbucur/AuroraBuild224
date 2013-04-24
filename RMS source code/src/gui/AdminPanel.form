@@ -502,7 +502,7 @@
             <Component class="javax.swing.JLabel" name="jLabelDoneIcon">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/gui/utils/img/DoneIcon1small.png"/>
+                  <Image iconType="3" name="/gui/utils/img/rsz_doneicon3.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Adaugat cu succes"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
