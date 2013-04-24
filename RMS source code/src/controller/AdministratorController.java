@@ -1,10 +1,13 @@
 package controller;
 
-import model.CadruDidactic;
-import model.Norma;
-import model.validator.CadruDidacticValidator;
-import model.validator.Validator;
+import model.*;
+import model.validator.*;
 import persistence.cadrudidacticpersistence.CadruDidacticPersistence;
+import persistence.echipamentpersistence.EchipamentPersistence;
+import persistence.personaladministrativpersistence.PersonalAdministrativPersistence;
+import persistence.salapersistence.SalaPersistence;
+
+import java.util.HashSet;
 
 /**
  *
@@ -12,10 +15,16 @@ import persistence.cadrudidacticpersistence.CadruDidacticPersistence;
  */
 public class AdministratorController extends CommonController {
     private CadruDidacticPersistence cadruDidacticPersistence;
+    private PersonalAdministrativPersistence personalAdministrativPersistence;
+    private SalaPersistence salaPersistence;
+    private EchipamentPersistence echipamentPersistence;
 
 
     public AdministratorController() {
         cadruDidacticPersistence = CadruDidacticPersistence.instance();
+        personalAdministrativPersistence = new PersonalAdministrativPersistence();
+        salaPersistence = new SalaPersistence();
+        echipamentPersistence = new EchipamentPersistence();
     }
 
     /**
@@ -38,6 +47,7 @@ public class AdministratorController extends CommonController {
                                     String parola,
                                     String postDidactic,
                                     boolean director) {
+
         CadruDidactic cadruDidactic = new CadruDidactic(nume, prenume, numarTelefon, email, domeniiInteres, parola);
         cadruDidactic.setPostDidactic(postDidactic);
         cadruDidactic.setDirector(director);
@@ -51,5 +61,67 @@ public class AdministratorController extends CommonController {
         }
 
         return null;
+    }
+
+
+    /**
+     * Adauga unui personal administrativ
+     * @param nume
+     * @param prenume
+     * @param numarTelefon
+     * @param email
+     * @param domeniiInteres
+     * @param parola
+     * @return id-ul personalului administrativ tocmai salvat in caz de succes, altfel null
+     */
+    public PersonalAdministrativ addPersonalAdministrativ (String nume, String prenume, String numarTelefon, String email, String domeniiInteres, String parola)
+    {
+
+        PersonalAdministrativ pa = new PersonalAdministrativ(nume, prenume, numarTelefon, email, domeniiInteres, parola);
+        Validator validator = new PersonalAdministrativValidator();
+        if (validator.validate(pa)) {
+            personalAdministrativPersistence.save(pa);
+            return pa;
+        }
+        return null;
+
+    }
+
+    /**
+     * Adauga Sala Noua
+     * @param codSala
+     * @param numarLocuri
+     * @return id-ul salii tocmai salvat in caz de succes, altfel null
+     */
+    public Sala addSala (String codSala, int numarLocuri)
+    {
+
+        Sala sala = new Sala(codSala, numarLocuri);
+        Validator validator = new SalaValidator();
+        if (validator.validate(sala)) {
+            salaPersistence.save(sala);
+            return sala;
+        }
+        return null;
+
+    }
+
+    /**
+     * Adauga Echipament Nou
+     * @param tipEchipament
+     * @param modelEchipament
+     * @return id-ul echipamentului tocmai salvat in caz de succes, altfel null
+     */
+    public Echipament addEchipament (String tipEchipament, String modelEchipament)
+    {
+
+        Echipament e = new Echipament(tipEchipament, modelEchipament);
+        Validator validator = new EchipamentValidator();
+        if (validator.validate(e)) {
+            echipamentPersistence.save(e);
+            return e;
+        }
+        return null;
+
     }
 }
