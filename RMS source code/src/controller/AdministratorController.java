@@ -139,4 +139,48 @@ public class AdministratorController extends CommonController {
         }
         return null;
     }
+    /**
+     * Modificarea unui personal administrativ
+     * Trebuie modificat in persistenta in loc de void --> boolean
+     * @param personalAdministrativ
+     */
+    public PersonalAdministrativ  updatePersonalAdministrativ (PersonalAdministrativ personalAdministrativ)
+    {
+        Validator validator = new PersonalAdministrativValidator();
+        if (validator.validate(personalAdministrativ)){
+           //boolean    ok = personalAdministrativPersistence.update(personalAdministrativ);
+           // if (ok == true)
+               // return personalAdministrativ;
+        }
+        return null;
+        }
+    /**
+     * Modificarea unui echipament
+     * @param echipament
+     */
+    public Echipament updateEchipament (Echipament echipament)
+    {
+        Validator validator = new EchipamentValidator();
+        if(validator.validate(echipament)){
+           // boolean ok = echipamentPersistence.update(echipament);
+           //  if(ok == true)
+                // return echipament;
+        }
+        return null;
+
+    }
+    /**
+     * Modificarea unei sali
+     * @param sala
+     */
+    public Sala updateSala (Sala sala)
+    {
+        Validator validator = new SalaValidator();
+        if(validator.validate(sala)){
+           // boolean ok = salaPersistence.update(sala);
+           // if(ok == true)
+               // return sala;
+        }
+        return null;
+    }
 }
