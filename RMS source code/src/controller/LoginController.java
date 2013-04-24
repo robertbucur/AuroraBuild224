@@ -48,5 +48,8 @@ public class LoginController {
         public void makeVisibleLoginFrame(){
             loginFrame.setVisible(true);
         }
+        public void disposeLoghinFrame(){
+            loginFrame.dispose();
+        }
     
 }

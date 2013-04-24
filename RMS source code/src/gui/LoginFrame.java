@@ -5,7 +5,13 @@
 package gui;
 
 import controller.LoginController;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -19,6 +25,9 @@ public class LoginFrame extends javax.swing.JFrame {
     public LoginFrame(LoginController controller) {
         this.loginController = controller;
         initComponents();
+        jPasswordField.addKeyListener(passKeyListener);
+        
+        
     }
 
     /**
@@ -52,8 +61,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jTextFieldUsername.setToolTipText("Introduceti username-ul aici");
 
-        jPasswordField.setToolTipText("Introduceti parola aici");
-
         jButtonLogin.setText("Login");
         jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +69,11 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         jButtonIesire.setText("Iesire");
+        jButtonIesire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIesireActionPerformed(evt);
+            }
+        });
 
         jButtonLoginAsGuest.setText("Login as Guest");
 
@@ -82,12 +94,12 @@ public class LoginFrame extends javax.swing.JFrame {
                             .addComponent(jTextFieldUsername)
                             .addComponent(jPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonLoginAsGuest)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonIesire, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButtonLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonLoginAsGuest, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonIesire, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -104,27 +116,29 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jButtonLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonIesire))
-                    .addComponent(jButtonLoginAsGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonLoginAsGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonIesire, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         try{
-            char[] pass = jPasswordField.getPassword();
-            String passFromChar = new String(pass);
-            loginController.login(jTextFieldUsername.getText(), passFromChar);
+            this.tryLogin();
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonLoginActionPerformed
+
+    private void jButtonIesireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIesireActionPerformed
+        this.loginController.disposeLoghinFrame();
+    }//GEN-LAST:event_jButtonIesireActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,4 +186,26 @@ public class LoginFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private LoginController loginController;
+    private KeyListener passKeyListener = new KeyAdapter(){
+            @Override
+            public void keyReleased( KeyEvent e ){
+                if( e.getKeyCode() == KeyEvent.VK_ENTER ){
+                    try {
+                        tryLogin();
+                    }catch (Exception ex) {
+                        Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+    
+    public void tryLogin() throws Exception{
+        try{
+            char[] pass = jPasswordField.getPassword();
+            String passFromChar = new String(pass);
+            loginController.login(jTextFieldUsername.getText(), passFromChar);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
