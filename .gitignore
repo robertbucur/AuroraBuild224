@@ -21,3 +21,6 @@ local.properties
 *.ipr
 *.iws
 .idea/
+
+# others
+*.db

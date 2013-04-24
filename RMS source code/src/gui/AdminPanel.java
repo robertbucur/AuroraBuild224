@@ -299,7 +299,7 @@ public class AdminPanel extends javax.swing.JPanel {
         jTextFieldSpecializareDoctorand.setToolTipText("Specializarea Doctorandului");
         jTextFieldSpecializareDoctorand.setNextFocusableComponent(jButtonAdaugaRU);
 
-        jLabelDoneIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/utils/img/DoneIcon1small.png"))); // NOI18N
+        jLabelDoneIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/utils/img/rsz_doneicon3.png"))); // NOI18N
         jLabelDoneIcon.setText("Adaugat cu succes");
         jLabelDoneIcon.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabelDoneIcon.setIconTextGap(3);
