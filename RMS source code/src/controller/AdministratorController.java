@@ -7,8 +7,6 @@ import persistence.echipamentpersistence.EchipamentPersistence;
 import persistence.personaladministrativpersistence.PersonalAdministrativPersistence;
 import persistence.salapersistence.SalaPersistence;
 
-import java.util.HashSet;
-
 /**
  *
  * @author Alexandru
@@ -139,6 +137,8 @@ public class AdministratorController extends CommonController {
         }
         return null;
     }
+
+
     /**
      * Modificarea unui personal administrativ
      * Trebuie modificat in persistenta in loc de void --> boolean
@@ -150,7 +150,8 @@ public class AdministratorController extends CommonController {
         if (validator.validate(personalAdministrativ)){
            //boolean    ok = personalAdministrativPersistence.update(personalAdministrativ);
            // if (ok == true)
-                return personalAdministrativ;
+            personalAdministrativPersistence.update(personalAdministrativ);
+            return personalAdministrativ;
         }
         return null;
         }
@@ -164,7 +165,8 @@ public class AdministratorController extends CommonController {
         if(validator.validate(echipament)){
            // boolean ok = echipamentPersistence.update(echipament);
            //  if(ok == true)
-                 return echipament;
+            echipamentPersistence.update(echipament);
+            return echipament;
         }
         return null;
 
@@ -179,8 +181,76 @@ public class AdministratorController extends CommonController {
         if(validator.validate(sala)){
            // boolean ok = salaPersistence.update(sala);
            // if(ok == true)
-                return sala;
+            salaPersistence.update(sala);
+            return sala;
         }
         return null;
     }
+
+    /**
+     * Stergerea unui cadru didactic
+     * @param cadruDidactic
+     */
+    public CadruDidactic deleteCadruDidactic (CadruDidactic cadruDidactic)
+    {
+        Validator validator = new CadruDidacticValidator();
+        if (validator.validate(cadruDidactic)) {
+            boolean ok = cadruDidacticPersistence.delete(cadruDidactic);
+            if (ok == true)
+                return cadruDidactic;
+        }
+        return null;
+    }
+
+    /**
+     * Stergerea unui personal administrativ
+     * Trebuie modificat in persistenta in loc de void --> boolean
+     * @param personalAdministrativ
+     */
+    public PersonalAdministrativ  deletePersonalAdministrativ (PersonalAdministrativ personalAdministrativ)
+    {
+        Validator validator = new PersonalAdministrativValidator();
+        if (validator.validate(personalAdministrativ)){
+            //boolean    ok = personalAdministrativPersistence.delete(personalAdministrativ);
+            // if (ok == true)
+            personalAdministrativPersistence.delete(personalAdministrativ);
+            return personalAdministrativ;
+        }
+        return null;
+    }
+
+    /**
+     * Stergerea unui echipament
+     * @param echipament
+     */
+    public Echipament deleteEchipament (Echipament echipament)
+    {
+        Validator validator = new EchipamentValidator();
+        if(validator.validate(echipament)){
+            // boolean ok = echipamentPersistence.delete(echipament);
+            //  if(ok == true)
+            echipamentPersistence.delete(echipament);
+            return echipament;
+        }
+        return null;
+
+    }
+
+    /**
+     * Stergerea unei sali
+     * @param sala
+     */
+    public Sala deleteSala (Sala sala)
+    {
+        Validator validator = new SalaValidator();
+        if(validator.validate(sala)){
+            // boolean ok = salaPersistence.delete(sala);
+            // if(ok == true)
+            salaPersistence.delete(sala);
+            return sala;
+        }
+        return null;
+    }
+
+
 }
