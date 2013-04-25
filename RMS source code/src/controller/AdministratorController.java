@@ -7,6 +7,7 @@ import persistence.echipamentpersistence.EchipamentPersistence;
 import persistence.personaladministrativpersistence.PersonalAdministrativPersistence;
 import persistence.salapersistence.SalaPersistence;
 
+
 /**
  *
  * @author Alexandru
@@ -23,6 +24,7 @@ public class AdministratorController extends CommonController {
         personalAdministrativPersistence = new PersonalAdministrativPersistence();
         salaPersistence = new SalaPersistence();
         echipamentPersistence = new EchipamentPersistence();
+
     }
 
     /**
