@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * TableModel pentru <code>Sala</code>
- *
  * @author Acristinei Razvan
  * @version 1.0,25 aprilie 2013
  */
