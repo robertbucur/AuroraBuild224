@@ -1,5 +1,7 @@
 package controller.tablemodel;
+
 import model.Sala;
+
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
  */
 public class SalaTableModel extends AbstractTableModel {
     private List<Sala> list;
-    private String[] cols = {"ID", "Cod sala","Numar locuri"};
+    private String[] cols = {"Cod sala","Numar locuri"};
 
     public SalaTableModel(List<Sala> list){
         this.list = list;
@@ -32,9 +34,8 @@ public class SalaTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Sala sala = list.get(rowIndex);
         switch(columnIndex) {
-            case 0: return sala.getId();
-            case 1: return sala.getCodSala();
-            case 2: return sala.getNrLocuri();
+            case 0: return sala.getCodSala();
+            case 1: return sala.getNrLocuri();
         }
         return null;
     }
