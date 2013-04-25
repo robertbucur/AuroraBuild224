@@ -25,6 +25,17 @@ public class AdminPanel extends javax.swing.JPanel {
      * Creates new form AdminPanel
      */
     public AdminPanel(LoginController lcontroller,AdministratorController controller,String loggedUser,AdminMainFrame amf) {
+        
+        t = new Timer(2000, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jLabelDoneIconRU.setVisible(false);
+                jLabelDoneIconRL.setVisible(false);
+            }
+        });
+        t.setRepeats(false);
+        
         generator = new RandomPass(6);
         this.controller = controller;
         this.commonController = new CommonController();
@@ -34,28 +45,21 @@ public class AdminPanel extends javax.swing.JPanel {
         initComponents();
         jLabelGreeting.setText("Buna "+loggedUser);
         //pentru RU:
-        jLabelDoneIcon.setVisible(false);
+        jLabelDoneIconRU.setVisible(false);
         jLabelPostOcupat.setVisible(false);
         jTextFieldPostOcupat.setVisible(false);
         jCheckBoxDirectorDepartament.setVisible(false);
         jLabelSpecializareDoctorand.setVisible(false);
         jTextFieldSpecializareDoctorand.setVisible(false);
         jTableRU.setModel(commonController.getResursaUmanaTableModel());
-        t = new Timer(2000, new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jLabelDoneIcon.setVisible(false);
-            }
-        });
-        t.setRepeats(false);
+        
         
         
         //pentru RL
+        jLabelDoneIconRL.setVisible(false);
         jTextFieldCodSalaRL.setEditable(false);
         jTextFieldNrLocuriRL.setEditable(false);
-        jButtonAdaugaSala.setEnabled(false);
-        jButtonRenuntaAddSala.setEnabled(false);
+        
         
         
     }
@@ -100,7 +104,7 @@ public class AdminPanel extends javax.swing.JPanel {
         jCheckBoxDirectorDepartament = new javax.swing.JCheckBox();
         jLabelSpecializareDoctorand = new javax.swing.JLabel();
         jTextFieldSpecializareDoctorand = new javax.swing.JTextField();
-        jLabelDoneIcon = new javax.swing.JLabel();
+        jLabelDoneIconRU = new javax.swing.JLabel();
         jPanelRF = new javax.swing.JPanel();
         jLabelResurseDisponibile = new javax.swing.JLabel();
         jScrollPaneRF = new javax.swing.JScrollPane();
@@ -120,10 +124,6 @@ public class AdminPanel extends javax.swing.JPanel {
         jLabelModelEchipament = new javax.swing.JLabel();
         jLabelCodSala = new javax.swing.JLabel();
         jLabelNumarLocuri = new javax.swing.JLabel();
-        jButtonAdaugaEchipament = new javax.swing.JButton();
-        jButtonRenuntaAddEchipament = new javax.swing.JButton();
-        jButtonAdaugaSala = new javax.swing.JButton();
-        jButtonRenuntaAddSala = new javax.swing.JButton();
         jTextFieldTipEchipamentRL = new javax.swing.JTextField();
         jTextFieldModelEchipamentRL = new javax.swing.JTextField();
         jTextFieldCodSalaRL = new javax.swing.JTextField();
@@ -132,6 +132,9 @@ public class AdminPanel extends javax.swing.JPanel {
         jTableEchipamente = new javax.swing.JTable();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTableSali = new javax.swing.JTable();
+        jButtonAdaugaRL = new javax.swing.JButton();
+        jButtonGolesteCampuriRL = new javax.swing.JButton();
+        jLabelDoneIconRL = new javax.swing.JLabel();
         jPanelSF = new javax.swing.JPanel();
         jPanelOR = new javax.swing.JPanel();
 
@@ -299,12 +302,12 @@ public class AdminPanel extends javax.swing.JPanel {
         jTextFieldSpecializareDoctorand.setToolTipText("Specializarea Doctorandului");
         jTextFieldSpecializareDoctorand.setNextFocusableComponent(jButtonAdaugaRU);
 
-        jLabelDoneIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/utils/img/rsz_doneicon3.png"))); // NOI18N
-        jLabelDoneIcon.setText("Adaugat cu succes");
-        jLabelDoneIcon.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabelDoneIcon.setIconTextGap(3);
-        jLabelDoneIcon.setMaximumSize(new java.awt.Dimension(100, 30));
-        jLabelDoneIcon.setMinimumSize(new java.awt.Dimension(60, 20));
+        jLabelDoneIconRU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/utils/img/rsz_doneicon3.png"))); // NOI18N
+        jLabelDoneIconRU.setText("Adaugat cu succes");
+        jLabelDoneIconRU.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabelDoneIconRU.setIconTextGap(3);
+        jLabelDoneIconRU.setMaximumSize(new java.awt.Dimension(100, 30));
+        jLabelDoneIconRU.setMinimumSize(new java.awt.Dimension(60, 20));
 
         javax.swing.GroupLayout jPanelRULayout = new javax.swing.GroupLayout(jPanelRU);
         jPanelRU.setLayout(jPanelRULayout);
@@ -371,7 +374,7 @@ public class AdminPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldSpecializareDoctorand, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                                .addComponent(jLabelDoneIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabelDoneIconRU, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(27, 27, 27))
         );
         jPanelRULayout.setVerticalGroup(
@@ -431,7 +434,7 @@ public class AdminPanel extends javax.swing.JPanel {
                             .addComponent(jTextFieldPostOcupat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBoxDirectorDepartament))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelDoneIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelDoneIconRU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanelRULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAdaugaRU)
@@ -593,18 +596,6 @@ public class AdminPanel extends javax.swing.JPanel {
 
         jLabelNumarLocuri.setText("Numar locuri:");
 
-        jButtonAdaugaEchipament.setText("Adauga");
-        jButtonAdaugaEchipament.setToolTipText("Adauga un echipament cu datele introduse mai sus");
-
-        jButtonRenuntaAddEchipament.setText("Renunta");
-        jButtonRenuntaAddEchipament.setToolTipText("Sterge datele introduse in campuri");
-
-        jButtonAdaugaSala.setText("Adauga");
-        jButtonAdaugaSala.setToolTipText("Adauga o sala cu datele introduse mai sus");
-
-        jButtonRenuntaAddSala.setText("Renunta");
-        jButtonRenuntaAddSala.setToolTipText("Sterge datele introduse in campuri");
-
         jTableEchipamente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -647,6 +638,30 @@ public class AdminPanel extends javax.swing.JPanel {
         });
         jScrollPane7.setViewportView(jTableSali);
 
+        jButtonAdaugaRL.setText("Adauga");
+        jButtonAdaugaRL.setMaximumSize(new java.awt.Dimension(69, 23));
+        jButtonAdaugaRL.setMinimumSize(new java.awt.Dimension(69, 23));
+        jButtonAdaugaRL.setPreferredSize(new java.awt.Dimension(69, 23));
+        jButtonAdaugaRL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdaugaRLActionPerformed(evt);
+            }
+        });
+
+        jButtonGolesteCampuriRL.setText("Goleste campuri");
+        jButtonGolesteCampuriRL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGolesteCampuriRLActionPerformed(evt);
+            }
+        });
+
+        jLabelDoneIconRL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/utils/img/rsz_doneicon3.png"))); // NOI18N
+        jLabelDoneIconRL.setText("Adaugare efectuata cu succes");
+        jLabelDoneIconRL.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabelDoneIconRL.setIconTextGap(3);
+        jLabelDoneIconRL.setMaximumSize(new java.awt.Dimension(100, 30));
+        jLabelDoneIconRL.setMinimumSize(new java.awt.Dimension(60, 20));
+
         javax.swing.GroupLayout jPanelRLLayout = new javax.swing.GroupLayout(jPanelRL);
         jPanelRL.setLayout(jPanelRLLayout);
         jPanelRLLayout.setHorizontalGroup(
@@ -654,70 +669,76 @@ public class AdminPanel extends javax.swing.JPanel {
             .addGroup(jPanelRLLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jRadioButtonAdaugaEchipament, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelTipEchipament)
-                        .addComponent(jTextFieldTipEchipamentRL)
-                        .addComponent(jLabelModelEchipament)
-                        .addComponent(jTextFieldModelEchipamentRL))
-                    .addComponent(jButtonAdaugaEchipament)
-                    .addComponent(jButtonRenuntaAddEchipament))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButtonAdaugaSala)
-                    .addComponent(jLabelCodSala)
-                    .addComponent(jLabelNumarLocuri)
-                    .addComponent(jTextFieldNrLocuriRL, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                    .addComponent(jTextFieldCodSalaRL)
-                    .addComponent(jButtonAdaugaSala)
-                    .addComponent(jButtonRenuntaAddSala))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelRLLayout.createSequentialGroup()
+                        .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButtonAdaugaEchipament, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRadioButtonAdaugaSala))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTipEchipament)
+                            .addComponent(jTextFieldTipEchipamentRL)
+                            .addComponent(jLabelModelEchipament)
+                            .addComponent(jTextFieldModelEchipamentRL)
+                            .addComponent(jLabelCodSala)
+                            .addComponent(jTextFieldCodSalaRL)
+                            .addComponent(jLabelNumarLocuri)
+                            .addComponent(jTextFieldNrLocuriRL, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))
+                    .addGroup(jPanelRLLayout.createSequentialGroup()
+                        .addComponent(jButtonAdaugaRL, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonGolesteCampuriRL))
+                    .addComponent(jLabelDoneIconRL, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanelRLLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextFieldCodSalaRL, jTextFieldModelEchipamentRL, jTextFieldNrLocuriRL, jTextFieldTipEchipamentRL});
 
-        jPanelRLLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane5, jScrollPane7});
+        jPanelRLLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonAdaugaRL, jButtonGolesteCampuriRL});
 
         jPanelRLLayout.setVerticalGroup(
             jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRLLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelRLLayout.createSequentialGroup()
-                        .addComponent(jRadioButtonAdaugaSala)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelCodSala)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldCodSalaRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelNumarLocuri)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldNrLocuriRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonAdaugaSala)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelRLLayout.createSequentialGroup()
+                        .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelRLLayout.createSequentialGroup()
+                                .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButtonAdaugaEchipament)
+                                    .addGroup(jPanelRLLayout.createSequentialGroup()
+                                        .addComponent(jLabelTipEchipament)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldTipEchipamentRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabelModelEchipament)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldModelEchipamentRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(106, 106, 106)
+                                .addComponent(jLabelCodSala))
+                            .addGroup(jPanelRLLayout.createSequentialGroup()
+                                .addGap(207, 207, 207)
+                                .addComponent(jRadioButtonAdaugaSala)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonRenuntaAddSala))
-                    .addGroup(jPanelRLLayout.createSequentialGroup()
-                        .addComponent(jRadioButtonAdaugaEchipament)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelTipEchipament)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldTipEchipamentRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelModelEchipament)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldModelEchipamentRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonAdaugaEchipament)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonRenuntaAddEchipament))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addComponent(jTextFieldCodSalaRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelNumarLocuri)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldNrLocuriRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelDoneIconRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAdaugaRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonGolesteCampuriRL))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Resurse Logistice", jPanelRL);
@@ -808,28 +829,46 @@ public class AdminPanel extends javax.swing.JPanel {
     private void jButtonAdaugaRUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdaugaRUActionPerformed
         if(jRadioButtonCadruDidactic.isSelected()){
             try{
-                this.controller.addCadruDidactic(jTextFieldNume.getText(),
-                                            jTextFieldPrenume.getText(),
-                                            jTextFieldTelefon.getText(),
-                                            jTextFieldEmail.getText(),
-                                            jTextFieldInterese.getText(),
+                if(this.controller.addCadruDidactic(jTextFieldNume.getText().trim(),
+                                            jTextFieldPrenume.getText().trim(),
+                                            jTextFieldTelefon.getText().trim(),
+                                            jTextFieldEmail.getText().trim(),
+                                            jTextFieldInterese.getText().trim(),
                                             generator.nextPassword(),
-                                            jTextFieldPostOcupat.getText(),
-                                            jCheckBoxDirectorDepartament.isSelected());
-                this.jLabelDoneIcon.setVisible(true);   
+                                            jTextFieldPostOcupat.getText().trim(),
+                                            jCheckBoxDirectorDepartament.isSelected())  != null){
+                this.jLabelDoneIconRU.setVisible(true);   
                 this.clearFieldsRU();
+                }
             }catch(Exception e){
-                JOptionPane.showMessageDialog(this, e.getMessage(), "asd", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
             }
             
         }
+        
+        if(jRadioButtonPersonalAdministrativ.isSelected()){
+            try{
+                if(this.controller.addPersonalAdministrativ(jTextFieldNume.getText().trim(),
+                                            jTextFieldPrenume.getText().trim(),
+                                            jTextFieldTelefon.getText().trim(),
+                                            jTextFieldEmail.getText().trim(),
+                                            jTextFieldInterese.getText().trim(),
+                                            generator.nextPassword()) != null){
+                this.jLabelDoneIconRU.setVisible(true);   
+                this.clearFieldsRU();  
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
         if(jRadioButtonCercetator.isSelected()){
             
-        }
-        if(jRadioButtonPersonalAdministrativ.isSelected()){
             
         }
+        
         if(jRadioButtonDoctorand.isSelected()){
+            
             
         }
         
@@ -843,10 +882,6 @@ public class AdminPanel extends javax.swing.JPanel {
     private void jRadioButtonAdaugaEchipamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAdaugaEchipamentActionPerformed
         jTextFieldCodSalaRL.setEditable(false);
         jTextFieldNrLocuriRL.setEditable(false);
-        jButtonAdaugaSala.setEnabled(false);
-        jButtonRenuntaAddSala.setEnabled(false);
-        jButtonAdaugaEchipament.setEnabled(true);
-        jButtonRenuntaAddEchipament.setEnabled(true);
         jTextFieldModelEchipamentRL.setEditable(true);
         jTextFieldTipEchipamentRL.setEditable(true);
     }//GEN-LAST:event_jRadioButtonAdaugaEchipamentActionPerformed
@@ -854,10 +889,6 @@ public class AdminPanel extends javax.swing.JPanel {
     private void jRadioButtonAdaugaSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAdaugaSalaActionPerformed
         jTextFieldCodSalaRL.setEditable(true);
         jTextFieldNrLocuriRL.setEditable(true);
-        jButtonAdaugaSala.setEnabled(true);
-        jButtonRenuntaAddSala.setEnabled(true);
-        jButtonAdaugaEchipament.setEnabled(false);
-        jButtonRenuntaAddEchipament.setEnabled(false);
         jTextFieldModelEchipamentRL.setEditable(false);
         jTextFieldTipEchipamentRL.setEditable(false);
     }//GEN-LAST:event_jRadioButtonAdaugaSalaActionPerformed
@@ -871,24 +902,57 @@ public class AdminPanel extends javax.swing.JPanel {
         this.clearFieldsRU();
     }//GEN-LAST:event_jButtonGolesteCampuriRUActionPerformed
 
+    private void jButtonAdaugaRLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdaugaRLActionPerformed
+        if(jRadioButtonAdaugaEchipament.isSelected()){
+            try{
+                if(this.controller.addEchipament(jTextFieldTipEchipamentRL.getText().trim(), 
+                                                 jTextFieldModelEchipamentRL.getText().trim()) 
+                                                 != null){
+                    this.jLabelDoneIconRL.setVisible(true);
+                    this.clearFieldsRL();
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        if(jRadioButtonAdaugaSala.isSelected()){
+            try{
+                if(this.controller.addSala(jTextFieldCodSalaRL.getText().trim(), 
+                                           Integer.parseInt(jTextFieldNrLocuriRL.getText())) 
+                                           != null){
+                    this.jLabelDoneIconRL.setVisible(true);
+                    this.clearFieldsRL();
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        //aici trebuie sa vina update-ul la table-ul de resurse logistice cand o sa fie implementat si care se apeleaza
+        //dupa fiecare adaugare/modificare
+        t.start();//aici dispare jLabel cu adaugat cu succes
+    }//GEN-LAST:event_jButtonAdaugaRLActionPerformed
+
+    private void jButtonGolesteCampuriRLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGolesteCampuriRLActionPerformed
+        this.clearFieldsRL();
+    }//GEN-LAST:event_jButtonGolesteCampuriRLActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupRL;
     private javax.swing.ButtonGroup buttonGroupRU;
-    private javax.swing.JButton jButtonAdaugaEchipament;
     private javax.swing.JButton jButtonAdaugaRF;
+    private javax.swing.JButton jButtonAdaugaRL;
     private javax.swing.JButton jButtonAdaugaRU;
-    private javax.swing.JButton jButtonAdaugaSala;
+    private javax.swing.JButton jButtonGolesteCampuriRL;
     private javax.swing.JButton jButtonGolesteCampuriRU;
     private javax.swing.JButton jButtonLogout;
-    private javax.swing.JButton jButtonRenuntaAddEchipament;
-    private javax.swing.JButton jButtonRenuntaAddSala;
     private javax.swing.JButton jButtonRenuntaRF;
     private javax.swing.JCheckBox jCheckBoxDirectorDepartament;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelCodSala;
-    private javax.swing.JLabel jLabelDoneIcon;
+    private javax.swing.JLabel jLabelDoneIconRL;
+    private javax.swing.JLabel jLabelDoneIconRU;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelGreeting;
     private javax.swing.JLabel jLabelInterese;
@@ -966,6 +1030,12 @@ public class AdminPanel extends javax.swing.JPanel {
         jTextFieldPostOcupat.setText("");
         jTextFieldSpecializareDoctorand.setText("");
         jCheckBoxDirectorDepartament.setSelected(false);
+    }
+    private void clearFieldsRL(){
+        jTextFieldCodSalaRL.setText("");
+        jTextFieldNrLocuriRL.setText("");
+        jTextFieldModelEchipamentRL.setText("");
+        jTextFieldTipEchipamentRL.setText("");
     }
     
 //    public static void waitfor (int n){

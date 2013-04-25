@@ -179,7 +179,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jTextFieldSpecializareDoctorand" min="-2" pref="120" max="-2" attributes="0"/>
                                       <EmptySpace pref="29" max="32767" attributes="0"/>
-                                      <Component id="jLabelDoneIcon" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <Component id="jLabelDoneIconRU" min="-2" pref="151" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -263,7 +263,7 @@
                                   <Component id="jCheckBoxDirectorDepartament" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabelDoneIcon" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelDoneIconRU" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -499,7 +499,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelDoneIcon">
+            <Component class="javax.swing.JLabel" name="jLabelDoneIconRU">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/gui/utils/img/rsz_doneicon3.png"/>
@@ -689,31 +689,36 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jRadioButtonAdaugaEchipament" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabelTipEchipament" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldTipEchipamentRL" linkSize="2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabelModelEchipament" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldModelEchipamentRL" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jRadioButtonAdaugaEchipament" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonAdaugaSala" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelTipEchipament" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldTipEchipamentRL" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabelModelEchipament" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldModelEchipamentRL" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabelCodSala" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldCodSalaRL" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabelNumarLocuri" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldNrLocuriRL" linkSize="2" alignment="0" pref="138" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="jButtonAdaugaEchipament" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonRenuntaAddEchipament" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jButtonAdaugaRL" linkSize="9" min="-2" pref="93" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jButtonGolesteCampuriRL" linkSize="9" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabelDoneIconRL" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane5" linkSize="4" min="-2" pref="242" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jRadioButtonAdaugaSala" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelCodSala" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelNumarLocuri" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldNrLocuriRL" linkSize="2" alignment="0" pref="138" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCodSalaRL" linkSize="2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButtonAdaugaSala" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonRenuntaAddSala" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane5" pref="465" max="32767" attributes="0"/>
+                          <Component id="jScrollPane7" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane7" linkSize="4" min="-2" pref="211" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -721,41 +726,51 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane7" min="-2" pref="416" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jRadioButtonAdaugaSala" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabelCodSala" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldCodSalaRL" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabelNumarLocuri" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldNrLocuriRL" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButtonAdaugaSala" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane5" min="-2" pref="199" max="-2" attributes="0"/>
+                              <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+                              <Component id="jScrollPane7" min="-2" pref="217" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jRadioButtonAdaugaEchipament" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabelTipEchipament" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldTipEchipamentRL" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jLabelModelEchipament" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldModelEchipamentRL" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                                      <Component id="jLabelCodSala" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonAdaugaSala" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButtonRenuntaAddSala" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldCodSalaRL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabelNumarLocuri" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTextFieldNrLocuriRL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabelDoneIconRL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonAdaugaRL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonGolesteCampuriRL" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jRadioButtonAdaugaEchipament" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabelTipEchipament" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldTipEchipamentRL" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabelModelEchipament" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldModelEchipamentRL" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButtonAdaugaEchipament" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonRenuntaAddEchipament" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane5" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -802,30 +817,6 @@
             <Component class="javax.swing.JLabel" name="jLabelNumarLocuri">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Numar locuri:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonAdaugaEchipament">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Adauga"/>
-                <Property name="toolTipText" type="java.lang.String" value="Adauga un echipament cu datele introduse mai sus"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonRenuntaAddEchipament">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Renunta"/>
-                <Property name="toolTipText" type="java.lang.String" value="Sterge datele introduse in campuri"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonAdaugaSala">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Adauga"/>
-                <Property name="toolTipText" type="java.lang.String" value="Adauga o sala cu datele introduse mai sus"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonRenuntaAddSala">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Renunta"/>
-                <Property name="toolTipText" type="java.lang.String" value="Sterge datele introduse in campuri"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldTipEchipamentRL">
@@ -902,6 +893,47 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JButton" name="jButtonAdaugaRL">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adauga"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[69, 23]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[69, 23]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[69, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAdaugaRLActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonGolesteCampuriRL">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Goleste campuri"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGolesteCampuriRLActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelDoneIconRL">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/gui/utils/img/rsz_doneicon3.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Adaugare efectuata cu succes"/>
+                <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="3"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[100, 30]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[60, 20]"/>
+                </Property>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelSF">
