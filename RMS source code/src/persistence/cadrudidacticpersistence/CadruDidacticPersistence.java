@@ -3,9 +3,7 @@ package persistence.cadrudidacticpersistence;
 import model.CadruDidactic;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
 import persistence.Persistence;
 
@@ -48,7 +46,8 @@ public class CadruDidacticPersistence extends Persistence {
 	}
 
 	/**
-	 * Metoda salveaza in persistenta un Cadru Didactic.
+	 * Metoda salveaza in persistenta un Cadru Didactic. Daca cadrul didactic se afla in
+	 * persistenta atunci se returneaza -1, altfel id-ul sau.
 	 * 
 	 * @param cadruDidactic
 	 *            Cadru Didactic ce se doreste a fi salvat
@@ -56,7 +55,13 @@ public class CadruDidacticPersistence extends Persistence {
 	 * @since version 1.0
 	 */
 	public int save(CadruDidactic cadruDidactic) {
-		// save norma
+		//verific existenta sa in persistenta
+		CadruDidactic c = getCadruDidacticByNumeSiPrenume(cadruDidactic.getNume(), cadruDidactic.getPrenume());
+		if (c != null)
+			return -1;
+		
+		
+		//nu se afla in persistenta
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
@@ -66,7 +71,7 @@ public class CadruDidacticPersistence extends Persistence {
 
 			tx.commit();
 
-			// save cadrudidacic
+			// save cadrudidacic(inclusiv norma)
 			return CadruDidacticRepository.save(factory, cadruDidactic);
 
 		} catch (HibernateException e) {
@@ -188,6 +193,27 @@ public class CadruDidacticPersistence extends Persistence {
 			String domeniuInteres) {
 		return CadruDidacticFactory.getCadruDidacticByDomeniuInteres(factory,
 				domeniuInteres);
+	}
+	
+	/**
+	 * Metoda realizeaza loginul pe baza unui username primit(care este de forma
+	 * nume.prenume) si a unei parole. Se returneaza CadrulDidactic cu numele si
+	 * prenumele respective daca este corecta parola, altfel null.  
+	 * 
+	 * 
+	 * @param username string de forma <code>nume</code>.<code>prenume</code>
+	 * @param password parola valida dpdv al validatorului
+	 * @return cadrul didactic cu numele=<code>nume</code> si prenumele=<code>prenume</code> daca exista, altfel <code>null</code>
+	 * @since version 1.0
+	 */
+	public CadruDidactic login(String username, String password){
+		String[] person = username.split("\\.");
+		
+		CadruDidactic c = getCadruDidacticByNumeSiPrenume(person[0], person[1]);
+		if (c.getParola().equals(password))
+			return c;
+		
+		return null;
 	}
 
 	

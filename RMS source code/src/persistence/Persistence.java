@@ -15,8 +15,12 @@ public abstract class Persistence {
 	 * SessionFactory primit de la HIBERNATE
 	 */
 	@SuppressWarnings("deprecation")
-	protected static SessionFactory factory = new Configuration().configure()
-			.buildSessionFactory();
+	protected SessionFactory factory;
+	
+	public Persistence() {
+		factory = new Configuration().configure()
+				.buildSessionFactory();
+	}
 	
 	
 	

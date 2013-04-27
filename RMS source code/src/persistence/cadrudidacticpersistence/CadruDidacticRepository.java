@@ -89,7 +89,7 @@ class CadruDidacticRepository {
 	 * @return cate astfel de obiecte au fost sterse
 	 * @since version 1.0
 	 */
-	public static int delete(SessionFactory factory,
+	static int delete(SessionFactory factory,
 			CadruDidactic cadruDidactic) {
 		int ok = 0;
 		
@@ -99,10 +99,12 @@ class CadruDidacticRepository {
 			tx = session.beginTransaction();
 			
 			CadruDidactic c = (CadruDidactic) session.get(CadruDidactic.class, cadruDidactic.getId());
-			session.delete(c);
+			if (c != null){
+				session.delete(c);
+				ok = 1;
+			}
 			
-			tx.commit();
-			ok = 1;
+			tx.commit();			
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -113,7 +115,7 @@ class CadruDidacticRepository {
 		}
 		return ok;
 	}
-
+	
 	
 
 }

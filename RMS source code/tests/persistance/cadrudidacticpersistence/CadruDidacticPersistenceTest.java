@@ -19,6 +19,8 @@ public class CadruDidacticPersistenceTest {
 	static CadruDidactic cd3;
 	static CadruDidactic cd4;
 	static CadruDidactic cd5;
+	static CadruDidactic cd6;
+	static CadruDidactic cd7;
 	
 	@BeforeClass
 	public static void onlyOnce(){
@@ -45,8 +47,8 @@ public class CadruDidacticPersistenceTest {
 		cd2.setNorma(new Norma(8, 7, 8));
 		
 		cd3 = new CadruDidactic();
-		cd3.setNume("Mihu");
-		cd3.setPrenume("Cosmin");
+		cd3.setNume("Marga");
+		cd3.setPrenume("Andrei");
 		cd3.setEmail("cosmin@gmail.com");
 		cd3.setParola("parola1");
 		cd3.setDomeniiInteres("c++,java,c#,android,ios");
@@ -55,8 +57,8 @@ public class CadruDidacticPersistenceTest {
 		cd3.setNorma(new Norma(5, 6, 8));
 		
 		cd4 = new CadruDidactic();
-		cd4.setNume("Mihu");
-		cd4.setPrenume("Cosmin");
+		cd4.setNume("Rebreanu");
+		cd4.setPrenume("Liviu");
 		cd4.setEmail("cosmin@gmail.com");
 		cd4.setParola("parola1");
 		cd4.setDomeniiInteres("c++,java,c#,android,ios");
@@ -65,14 +67,34 @@ public class CadruDidacticPersistenceTest {
 		cd4.setNorma(new Norma(5, 6, 8));
 		
 		cd5 = new CadruDidactic();
-		cd5.setNume("Mihu");
-		cd5.setPrenume("Cosmin");
+		cd5.setNume("Muresanu");
+		cd5.setPrenume("Andrei");
 		cd5.setEmail("cosmin@gmail.com");
 		cd5.setParola("parola1");
 		cd5.setDomeniiInteres("c++,java,c#,android,ios");
 		cd5.setDirector(false);
 		cd5.setPostDidactic("developer");
 		cd5.setNorma(new Norma(5, 6, 8));
+		
+		cd6 = new CadruDidactic();
+		cd6.setNume("Sb");
+		cd6.setPrenume("AB");
+		cd6.setEmail("cosmin@gmail.com");
+		cd6.setParola("parola1");
+		cd6.setDomeniiInteres("c++,java,c#,android,ios");
+		cd6.setDirector(false);
+		cd6.setPostDidactic("developer");
+		cd6.setNorma(new Norma(5, 6, 8));
+		
+		cd7 = new CadruDidactic();
+		cd7.setNume("Hapciu");
+		cd7.setPrenume("Nicolae");
+		cd7.setEmail("cosmin@gmail.com");
+		cd7.setParola("parola1");
+		cd7.setDomeniiInteres("c++,java,c#,android,ios");
+		cd7.setDirector(false);
+		cd7.setPostDidactic("developer");
+		cd7.setNorma(new Norma(9, 9, 9));
 	}
 	
 	@AfterClass
@@ -82,6 +104,8 @@ public class CadruDidacticPersistenceTest {
 		rep.delete(cd3);
 		rep.delete(cd4);
 		rep.delete(cd5);
+		rep.delete(cd6);
+		rep.delete(cd7);
 	}
 
 	@Test
@@ -93,6 +117,15 @@ public class CadruDidacticPersistenceTest {
 			fail("Salvare incorecta");
 		else
 			assertEquals("Salvare incorecta", id, cd.getId());
+		
+		
+		//try re-save
+		int id1 = rep.save(cd1);
+
+		CadruDidactic cd1 = rep.getCadruDidacticById(id1);
+		if (cd1 != null)
+			fail("(re)Salvare incorecta");		
+		
 	}
 	
 	@Test
@@ -151,6 +184,28 @@ public class CadruDidacticPersistenceTest {
 		if (ok1 == false || ok2 == false)
 			fail("getAllCadruDidactic error");
 	}
+	
+	
+	@Test
+	public void testLogin(){
+		rep.save(cd6);
+		String username = cd6.getNume() + "." + cd6.getPrenume();
+		String password = cd6.getParola();
+		
+		CadruDidactic c1 = rep.login(username, password);
+		if (c1 == null)
+			fail("login incorect");
+		
+		CadruDidactic c2 = rep.login(username, password + "error");
+		if (c2 != null)
+			fail("login incorect");
+		
+		
+		
+		
+		
+	}
+	
 	
 	
 	@Test

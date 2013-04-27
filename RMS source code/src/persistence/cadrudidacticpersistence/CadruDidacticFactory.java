@@ -111,6 +111,7 @@ public class CadruDidacticFactory {
 
 		return (result == null || result.size() == 0) ? null : result.get(0);
 	}
+	
 
 	/**
 	 * Metoda intoarece un obiect de tip <code>CdruDidactic</code> din
@@ -225,5 +226,7 @@ public class CadruDidacticFactory {
 
 		return result;
 	}
+	
+	
 
 }
