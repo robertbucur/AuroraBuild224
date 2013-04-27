@@ -13,7 +13,7 @@
 		<property name="postDidactic" column="POST_DIDACTIC" type="string" not-null="false" />
 		
 		<many-to-one name="norma" column="NORMA_ID" 
-			class="model.Norma" not-null="false" cascade="none" lazy="false" />
+			class="model.Norma" not-null="false" cascade="delete" lazy="false" />
 		
 		
 	<!-- din ResursaUmana -->	
