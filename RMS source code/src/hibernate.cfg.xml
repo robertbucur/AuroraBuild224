@@ -33,6 +33,7 @@
   <!-- mapari Cosmin Mihu -->  
     <mapping resource="persistence/hbm/CadruDidactic.hbm.xml" />
     <mapping resource="persistence/hbm/Norma.hbm.xml" />
+    <mapping resource="persistence/hbm/Echipament.hbm.xml" />
     
     
     

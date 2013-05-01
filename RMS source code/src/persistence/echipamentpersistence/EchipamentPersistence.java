@@ -2,6 +2,8 @@ package persistence.echipamentpersistence;
 
 import java.util.List;
 
+
+import persistence.Persistence;
 import model.Echipament;
 
 /**
@@ -14,21 +16,37 @@ import model.Echipament;
 
 
 
-public class EchipamentPersistence {
+public class EchipamentPersistence extends Persistence{
 
 	/**
-	 * Lista care reprezinta persistenta.
+	 * Singleton.
 	 */
-	private List<Echipament> list;
+	private static EchipamentPersistence persistence;
 
 	/**
 	 * Constructorul persistentei pentru Echipamente
 	 * 
 	 * @since version 1.0
 	 */
-	public EchipamentPersistence() {
+	private EchipamentPersistence() {
 	}
 
+	/**
+	 * Metoda de acces la obiectul de peristenta pentru echipamente.
+	 * 
+	 * @return instanta a persistentei pentru echipamente
+	 * @since version 1.0
+	 */
+	public static EchipamentPersistence instance() {
+		if (persistence == null)
+			persistence = new EchipamentPersistence();
+		return persistence;
+	}
+
+	
+	
+	
+	
 	/**
 	 * Metoda salveaza in persistenta un Echipament.
 	 * 
@@ -36,9 +54,13 @@ public class EchipamentPersistence {
 	 *            Echipamentul ce se doreste a fi salvat
 	 * @since version 1.0
 	 */
-	public void save(Echipament echipament) {
-		EchipamentRepository.save(echipament, list);
+	
+	public boolean save(Echipament echipament) {
+		int ok = EchipamentRepository.save(factory, echipament);
+
+		return (ok == 0) ? false : true;
 	}
+
 
 	/**
 	 * Metoda modifica in persistenta Echipamentul cu id-ul lui <code>echipament</code> setand
@@ -48,8 +70,11 @@ public class EchipamentPersistence {
 	 *            Echipamentul ce se doreste a fi modificat
 	 * @since version 1.0
 	 */
-	public void update(Echipament echipament) {
-		EchipamentRepository.update(echipament, list);
+
+	public boolean update(Echipament echipament) {
+		int ok = EchipamentRepository.update(factory, echipament);
+
+		return (ok == 0) ? false : true;
 	}
 
 	
@@ -64,11 +89,23 @@ public class EchipamentPersistence {
 	 *            Echipamentul ce se doreste a fi stears
 	 * @since version 1.0
 	 */
-	public void delete(Echipament echipament) {
-		EchipamentRepository.delete(echipament, list);
+	public boolean delete(Echipament echipament) {
+		int ok = EchipamentRepository.delete(factory, echipament);
+
+		return (ok == 0) ? false : true;
 	}
 	
 	
+	/**
+	 * Metoda intoarce toate echipamentele daca exista,
+	 * altfel <code>null</code>.
+	 * 
+	 * @return
+	 * @since version 1.0
+	 */
+	public List<Echipament> getAllEchipament() {
+		return EchipamentFactory.getAllEchipament(factory);
+	}
 
 	/**
 	 * Metoda intoarce Echipamentul cu id-ul <code>id</code> daca exista,
@@ -79,7 +116,7 @@ public class EchipamentPersistence {
 	 * @since version 1.0
 	 */
 	public Echipament getEchipamentById(int id) {
-		return EchipamentFactory.getEchipamentById(id, list);
+		return EchipamentFactory.getEchipamentById(factory, id);
 	}
 
 	
@@ -92,7 +129,7 @@ public class EchipamentPersistence {
 	 * @since version 1.0
 	 */
 	public List<Echipament> getEchipamentByTipEchipament(String tipEchipament){
-		return EchipamentFactory.getEchipamentByTip(tipEchipament, list);
+		return EchipamentFactory.getEchipamentByTip( factory, tipEchipament);
 	}
 	
 	
@@ -105,7 +142,7 @@ public class EchipamentPersistence {
 	 * @since version 1.0
 	 */
 	public List<Echipament> getEchipamentByModelEchipament(String modelEchipament){
-		return EchipamentFactory.getEchipamentByModel(modelEchipament, list);
+		return EchipamentFactory.getEchipamentByModel(factory, modelEchipament);
 	}
 
 }

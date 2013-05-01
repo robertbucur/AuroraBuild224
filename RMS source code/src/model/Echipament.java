@@ -8,8 +8,8 @@ package model;
  */
 public class Echipament implements ResursaLogistica{
     private int id;
-    private String tipEchipament;
-    private String modelEchipament;
+    private String tip;
+    private String model;
 
     /**
      * Constructor pentru clasa <code>Echipament</code>.
@@ -18,26 +18,26 @@ public class Echipament implements ResursaLogistica{
      * @param modelEchipament modelul echipamentului
      */
     public Echipament(String tipEchipament, String modelEchipament) {
-        this.modelEchipament = modelEchipament;
-        this.tipEchipament = tipEchipament;
+        this.model = modelEchipament;
+        this.tip = tipEchipament;
     }
 
     public Echipament() {}
 
     public String getModelEchipament() {
-        return modelEchipament;
+        return model;
     }
 
     public void setModelEchipament(String modelEchipament) {
-        this.modelEchipament = modelEchipament;
+        this.model = modelEchipament;
     }
 
     public String getTipEchipament() {
-        return tipEchipament;
+        return tip;
     }
 
     public void setTipEchipament(String tipEchipament) {
-        this.tipEchipament = tipEchipament;
+        this.tip = tipEchipament;
     }
 
     public int getId() {

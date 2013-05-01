@@ -1,6 +1,10 @@
 package persistence.echipamentpersistence;
 
-import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import model.Echipament;
 
@@ -22,8 +26,26 @@ public class EchipamentRepository {
 	 *            lista unde se salveaza
 	 * @since version 1.0
 	 */
-	static void save(Echipament echipament, List<Echipament> list) {
-		list.add(echipament);
+	static int save(SessionFactory factory, Echipament echipament) {
+		Integer id = -1;
+		
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			
+			id = (Integer) session.save(echipament);
+			
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return id;
 	}
 
 	/**
@@ -39,18 +61,26 @@ public class EchipamentRepository {
 	 * @return cate astfel de obiecte au fost modificate
 	 * @since version 1.0
 	 */
-	static int update(Echipament echipament, List<Echipament> list) {
-		int count = 0;
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getId() == echipament.getId()) {
-				list.get(i).setModelEchipament(echipament.getModelEchipament());
-				list.get(i).setTipEchipament(echipament.getTipEchipament());
-				count++;
-			}
-		return count;
+	static int update(SessionFactory factory, Echipament echipament) {
+		int ok = 0;
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.update(echipament);
+			tx.commit();
+			
+			ok = 1;
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			ok = 0;
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return ok;
 	}
-
-	
 	
 	/**
 	 * Metoda sterge un Echipament din lista <code>list</code>. Cautarea inainte de
@@ -64,14 +94,31 @@ public class EchipamentRepository {
 	 * @return cate astfel de obiecte au fost sterse
 	 * @since version 1.0
 	 */
-	public static int delete(Echipament echipament, List<Echipament> list) {
-		int count = 0;
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getId() == echipament.getId()) {
-				list.remove(i);
-				count++;
+	static int delete(SessionFactory factory, Echipament echipament) {
+		int ok = 0;
+		
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			
+			Echipament e = (Echipament) session.get(Echipament.class, echipament.getId());
+			if (e != null){
+				session.delete(e);
+				ok = 1;
 			}
-		return count;
+			
+			tx.commit();			
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			ok = 0;
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return ok;
 	}
+	
 
 }
