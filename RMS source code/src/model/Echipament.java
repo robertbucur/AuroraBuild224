@@ -24,19 +24,19 @@ public class Echipament implements ResursaLogistica{
 
     public Echipament() {}
 
-    public String getModelEchipament() {
+    public String getModel() {
         return model;
     }
 
-    public void setModelEchipament(String modelEchipament) {
+    public void setModel(String modelEchipament) {
         this.model = modelEchipament;
     }
 
-    public String getTipEchipament() {
+    public String getTip() {
         return tip;
     }
 
-    public void setTipEchipament(String tipEchipament) {
+    public void setTip(String tipEchipament) {
         this.tip = tipEchipament;
     }
 
