@@ -22,7 +22,7 @@ public class AdministratorController extends CommonController {
     public AdministratorController() {
         cadruDidacticPersistence = CadruDidacticPersistence.instance();
         personalAdministrativPersistence = new PersonalAdministrativPersistence();
-        salaPersistence = new SalaPersistence();
+        salaPersistence = SalaPersistence.instance();
         echipamentPersistence = EchipamentPersistence.instance();
 
     }

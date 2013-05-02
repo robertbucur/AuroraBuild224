@@ -2,6 +2,14 @@ package persistence.salapersistence;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
+import model.Echipament;
 import model.Sala;
 
 /**
@@ -12,7 +20,38 @@ import model.Sala;
  */
 
 public class SalaFactory {
+	private static Session session;
+	
+	
+	/**
+	 * Metoda intoarece toate salile. Daca nu exsita 
+	 * nicio sala in persistenta, metoda returneaza <code>null</code>.
+	 * 
+	 * @param factory
+	 *            instanta primita de la HIBERNATE	 
+	 * @return toate salile daca exista, altfel
+	 *         <code>null</code>
+	 * @since version 1.0
+	 */
+	static List<Sala> getAllSali(SessionFactory factory) {
+		List<Sala> result = null;
 
+		try {
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(Sala.class);
+
+			result = factoryQuery(session, criteria);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+
+		return result;
+	}
+	
+	
 	/**
 	 * Metoda intoarece un obiect de tip <code>Sala</code> din containerul
 	 * <code>list</code> care are id-ul <code>id</code>. Daca nu exsita un
@@ -26,12 +65,24 @@ public class SalaFactory {
 	 *         <code>null</code>
 	 * @since version 1.0
 	 */
-	static Sala getSalaById(int id, List<Sala> list) {
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getId() == id) {
-				return list.get(i);
-			}
-		return null;
+
+	static Sala getSalaById(SessionFactory factory, int id) {
+		List<Sala> result = null;
+
+		try {
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(Sala.class);
+			criteria.add(Restrictions.eq("id", id));
+
+			result = factoryQuery(session, criteria);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+
+		return (result == null || result.size() == 0) ? null : result.get(0);
 	}
 	
 	
@@ -49,14 +100,92 @@ public class SalaFactory {
 	 * @return sala cu codul <code>codSala</code> daca exista, altfel <code>null</code>
 	 * @since version 1.0
 	 */
-	static Sala getSalaByCodSala(String codSala, List<Sala> list) {
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getCodSala().equals(codSala)) {
-				return list.get(i);
-			}
-		return null;
+	static Sala getSalaByCod(SessionFactory factory, String cod) {
+		List<Sala> result = null;
+
+		try {
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(Sala.class);
+			criteria.add(Restrictions.eq("codSala", cod));
+
+			result = factoryQuery(session, criteria);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+
+		return (result == null || result.size() == 0) ? null : result.get(0);
 	}
 	
+	
+	/**
+	 * /** Metoda intoarece o lista cu elemente de tip <code>Sala</code> din
+	 * containerul <code>list</code> care au modelul <code>modelEchipament</code>.
+	 * Daca nu exsita un astfel de obiect, metoda returneaza <code>null</code>.(lista vida)
+	 * 
+	 * @param modelEchipament
+	 *           modelul echipamentului pe care il cautam
+	 * @param list
+	 *            containerul in care se cauta
+	 * @return lista echipamentelor care au tipul <code>tipEchipament</code> daca exista,
+	 *  altfel <code>null</code>
+	 * @since version 1.0
+	 */
+	
+	static List<Sala> getSalaByNrLocuri(SessionFactory factory, int nrLocuri) {
+		List<Sala> result = null;
+
+		try {
+			session = factory.openSession();
+			Criteria criteria = session.createCriteria(Sala.class);
+			criteria.add(Restrictions.eq("nrLocuri", nrLocuri));
+
+			result = factoryQuery(session, criteria);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close();
+		}
+
+		return result;
+	}
+	
+	
+	
+	
+
+	/**
+	 * Obtine Salile din BD primid un obiect <code>Session</code>, filtrate dupa
+	 * <code>criteria</code>. (Metoda generala)
+	 * 
+	 * @param session sesiunea Hibernate
+	 * @param criteria criteriile de filtrare
+	 * @return
+	 * @since version 2.0
+	 */
+	
+	
+	private static List<Sala> factoryQuery(Session session,
+			Criteria criteria) {
+		List<Sala> result = null;
+
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+
+			result = criteria.list();
+
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+
+		return result;
+	}
 	
 	
 	

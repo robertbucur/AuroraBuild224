@@ -2,6 +2,12 @@ package persistence.salapersistence;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import model.Echipament;
 import model.Sala;
 
 /**
@@ -25,6 +31,28 @@ public class SalaRepository {
 	static void save(Sala sala, List<Sala> list) {
 		list.add(sala);
 	}
+	
+	static int save(SessionFactory factory, Sala sala) {
+		Integer id = -1;
+		
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			
+			id = (Integer) session.save(sala);
+			
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return id;
+	}
 
 	/**
 	 * Metoda modifica o Sala in lista <code>list</code>. Cautarea inainte de
@@ -39,17 +67,26 @@ public class SalaRepository {
 	 * @return cate astfel de obiecte au fost modificate
 	 * @since version 1.0
 	 */
-	static int update(Sala sala, List<Sala> list) {
-		int count = 0;
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getId() == sala.getId()) {
-				list.get(i).setCodSala(sala.getCodSala());
-				list.get(i).setNrLocuri(sala.getNrLocuri());
-				count++;
-			}
-		return count;
+	static int update(SessionFactory factory, Sala sala) {
+		int ok = 0;
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.update(sala);
+			tx.commit();
+			
+			ok = 1;
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			ok = 0;
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return ok;
 	}
-
 	/**
 	 * Metoda sterge o Sala din lista <code>list</code>. Cautarea inainte de
 	 * stergere se face dupa id-ul lui <code>sala</code>. Fiecare Sala din lista
@@ -62,14 +99,31 @@ public class SalaRepository {
 	 * @return cate astfel de obiecte au fost sterse
 	 * @since version 1.0
 	 */
-	public static int delete(Sala sala, List<Sala> list) {
-		int count = 0;
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getId() == sala.getId()) {
-				list.remove(i);
-				count++;
+	static int delete(SessionFactory factory, Sala sala) {
+		int ok = 0;
+		
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			
+			Sala s = (Sala) session.get(Sala.class, sala.getId());
+			if (s != null){
+				session.delete(s);
+				ok = 1;
 			}
-		return count;
+			
+			tx.commit();			
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			ok = 0;
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return ok;
 	}
+	
 
 }

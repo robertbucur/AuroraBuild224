@@ -2,6 +2,11 @@ package persistence.salapersistence;
 
 import java.util.List;
 
+import persistence.Persistence;
+import persistence.echipamentpersistence.EchipamentPersistence;
+import persistence.echipamentpersistence.EchipamentRepository;
+
+import model.Echipament;
 import model.Sala;
 
 /**
@@ -11,19 +16,34 @@ import model.Sala;
  * @author Bucur Claudiu-Robert
  * @version 1.0, 10 aprilie 2013
  */
-public class SalaPersistence {
+public class SalaPersistence extends Persistence{
 	/**
-	 * Lista care reprezinta persistenta.
+	 * Singleton.
 	 */
-	private List<Sala> list;
-
+	private static SalaPersistence persistence;
+	
+	
 	/**
 	 * Constructorul persistentei pentru Sali
 	 * 
 	 * @since version 1.0
 	 */
-	public SalaPersistence() {
+	private SalaPersistence() {
 	}
+	
+	
+	/**
+	 * Metoda de acces la obiectul de peristenta pentru sali.
+	 * 
+	 * @return instanta a persistentei pentru sali
+	 * @since version 1.0
+	 */
+	public static SalaPersistence instance() {
+		if (persistence == null)
+			persistence = new SalaPersistence();
+		return persistence;
+	}
+
 
 	/**
 	 * Metoda salveaza in persistenta o Sala.
@@ -32,9 +52,12 @@ public class SalaPersistence {
 	 *            Sala ce se doreste a fi salvat
 	 * @since version 1.0
 	 */
-	public void save(Sala sala) {
-		SalaRepository.save(sala, list);
+	public boolean save(Sala sala) {
+		int ok = SalaRepository.save(factory, sala);
+
+		return (ok == 0) ? false : true;
 	}
+
 
 	/**
 	 * Metoda modifica in persistenta Sala cu id-ul lui <code>sala</code> setand
@@ -44,11 +67,12 @@ public class SalaPersistence {
 	 *            Sala ce se doreste a fi modificata
 	 * @since version 1.0
 	 */
-	public void update(Sala sala) {
-		SalaRepository.update(sala, list);
+	public boolean update(Sala sala) {
+		int ok = SalaRepository.update(factory, sala);
+
+		return (ok == 0) ? false : true;
 	}
 
-	
 	
 	
 	/**
@@ -60,10 +84,11 @@ public class SalaPersistence {
 	 *            Sala ce se doreste a fi stearsa
 	 * @since version 1.0
 	 */
-	public void delete(Sala sala) {
-		SalaRepository.delete(sala, list);
+	public boolean delete(Sala sala) {
+		int ok = SalaRepository.delete(factory, sala);
+
+		return (ok == 0) ? false : true;
 	}
-	
 	
 
 	/**
@@ -75,7 +100,7 @@ public class SalaPersistence {
 	 * @since version 1.0
 	 */
 	public Sala getSalaById(int id) {
-		return SalaFactory.getSalaById(id, list);
+		return SalaFactory.getSalaById(factory, id);
 	}
 
 	
@@ -87,8 +112,21 @@ public class SalaPersistence {
 	 * @return
 	 * @since version 1.0
 	 */
-	public Sala getSalaByCodSala(String codSala){
-		return SalaFactory.getSalaByCodSala(codSala, list);
+	public Sala getSalaByCod(String codSala){
+		return SalaFactory.getSalaByCod(factory, codSala);
+	}
+	
+	
+	/**
+	 * Metoda intoarce Salile cu numar de locuri <code>nrLocuri</code>
+	 * daca exista, altfel <code>null</code>.
+	 * 
+	 * @param nrLocuri
+	 * @return
+	 * @since version 1.0
+	 */
+	public List<Sala> getSalaByNrLocuri (int nrLocuri){
+		return SalaFactory.getSalaByNrLocuri(factory, nrLocuri);
 	}
 
 
