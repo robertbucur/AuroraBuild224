@@ -17,16 +17,16 @@ public class TestEchipament {
         Echipament e = new Echipament("Camera foto", "Canon EOS 5D");
 
         assertNotNull(e);
-        assertEquals("Camera foto", e.getTipEchipament());
-        assertEquals("Canon EOS 5D", e.getModelEchipament());
+        assertEquals("Camera foto", e.getTip());
+        assertEquals("Canon EOS 5D", e.getModel());
 
         //testez getteri/setteri
         e.setId(15);
-        e.setModelEchipament("HP XYZ");
-        e.setTipEchipament("Imprimanta");
+        e.setModel("HP XYZ");
+        e.setTip("Imprimanta");
 
         assertEquals(15, e.getId());
-        assertEquals("Imprimanta", e.getTipEchipament());
-        assertEquals("HP XYZ", e.getModelEchipament());
+        assertEquals("Imprimanta", e.getTip());
+        assertEquals("HP XYZ", e.getModel());
     }
 }
