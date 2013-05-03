@@ -4,10 +4,13 @@ import controller.AdministratorController;
 import controller.CommonController;
 import controller.LoginController;
 import gui.utils.RandomPass;
+import model.*;
+
+import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
-import javax.swing.*;
 
 
 /**
@@ -15,6 +18,7 @@ import javax.swing.*;
  * @author Alexandru
  */
 public class AdministratorPanel extends javax.swing.JPanel {
+    private ResursaUmana selectedResursaUmana;
 
     /**
      * Creates new form AdministratorPanel
@@ -48,6 +52,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
         jLabelSpecializareDoctorand.setVisible(false);
         jTextFieldSpecializareDoctorand.setVisible(false);
         jTableRU.setModel(commonController.getResursaUmanaTableModel());
+        jTableRU.setRowSorter(new TableRowSorter<AbstractTableModel>(controller.getResursaUmanaTableModel()));
         
 
         //pentru RL
@@ -935,18 +940,21 @@ public class AdministratorPanel extends javax.swing.JPanel {
 
     private void jTableRUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRUMouseClicked
         int row = jTableRU.getSelectedRow();
-        this.jTextFieldNume.setText(jTableRU.getValueAt(row, 0).toString());
-        this.jTextFieldPrenume.setText(jTableRU.getValueAt(row, 1).toString());
-        this.jTextFieldTelefon.setText(jTableRU.getValueAt(row, 2).toString());
-        this.jTextFieldEmail.setText(jTableRU.getValueAt(row, 3).toString());
-        this.jTextFieldInterese.setText(jTableRU.getValueAt(row, 4).toString());
-        if(jTableRU.getValueAt(row, 5).toString().equals("Cadru didactic"))
+        row = jTableRU.convertRowIndexToModel(row);
+        selectedResursaUmana = controller.getResursaUmanaTableModel().getList().get(row);
+
+        this.jTextFieldNume.setText(selectedResursaUmana.getNume());
+        this.jTextFieldPrenume.setText(selectedResursaUmana.getPrenume());
+        this.jTextFieldTelefon.setText(selectedResursaUmana.getNumarTelefon());
+        this.jTextFieldEmail.setText(selectedResursaUmana.getEmail());
+        this.jTextFieldInterese.setText(selectedResursaUmana.getDomeniiInteres());
+        if(selectedResursaUmana instanceof CadruDidactic)
             jRadioButtonCadruDidactic.setSelected(true);
-        if(jTableRU.getValueAt(row, 5).toString().equals("Cercetator"))
+        if(selectedResursaUmana instanceof Cercetator)
             jRadioButtonCercetator.setSelected(true);
-        if(jTableRU.getValueAt(row, 5).toString().equals("Doctorand"))
+        if(selectedResursaUmana instanceof Doctorand)
             jRadioButtonDoctorand.setSelected(true);
-        if(jTableRU.getValueAt(row, 5).toString().equals("Personal administrativ"))
+        if(selectedResursaUmana instanceof PersonalAdministrativ)
             jRadioButtonPersonalAdministrativ.setSelected(true);
     }//GEN-LAST:event_jTableRUMouseClicked
 
