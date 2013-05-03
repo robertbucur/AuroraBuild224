@@ -1,6 +1,7 @@
 package controller;
 
-import gui.AdminMainFrame;
+import gui.AdministratorMainFrame;
+import gui.GuestMainFrame;
 import gui.LoginFrame;
 import java.util.Arrays;
 import javax.swing.WindowConstants;
@@ -38,11 +39,20 @@ public class LoginController {
         if(username.equals("admin") && password.equals(pass)){
             loginFrame.setVisible(false);//se ascunde fereastra de login dupa autentificarea cu succes (nu se distruge)
             AdministratorController administratorController = new AdministratorController();
-            AdminMainFrame adminMainFrame = new AdminMainFrame(this,administratorController, "mury");
+            AdministratorMainFrame adminMainFrame = new AdministratorMainFrame(this,administratorController, "mury");
             
         }else throw new Exception("o exceptie....");
         
         
+    }
+    public void guestLogin() throws Exception{
+        try{
+            CommonController commonController = new CommonController();
+            GuestMainFrame guestMainFrame = new GuestMainFrame(this,commonController);
+            loginFrame.setVisible(false);
+        }catch(Exception e){
+            throw(e);
+        }
     }
     //ce ii de aici in jos va rog sa lasati exact asa cum este
         public void makeVisibleLoginFrame(){

@@ -22,8 +22,8 @@ public class LoginFrame extends javax.swing.JFrame {
     /**
      * Creates new form LoginFrame
      */
-    public LoginFrame(LoginController controller) {
-        this.loginController = controller;
+    public LoginFrame(LoginController loginController) {
+        this.loginController = loginController;
         initComponents();
         jPasswordField.addKeyListener(passKeyListener);
         
@@ -76,6 +76,11 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         jButtonLoginAsGuest.setText("Login as Guest");
+        jButtonLoginAsGuest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoginAsGuestActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,6 +144,14 @@ public class LoginFrame extends javax.swing.JFrame {
     private void jButtonIesireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIesireActionPerformed
         this.loginController.disposeLoghinFrame();
     }//GEN-LAST:event_jButtonIesireActionPerformed
+
+    private void jButtonLoginAsGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginAsGuestActionPerformed
+        try{
+            this.loginController.guestLogin();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Exception", JOptionPane.ERROR_MESSAGE);    
+        }
+    }//GEN-LAST:event_jButtonLoginAsGuestActionPerformed
 
     /**
      * @param args the command line arguments

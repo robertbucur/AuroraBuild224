@@ -4,14 +4,9 @@ import controller.AdministratorController;
 import controller.CommonController;
 import controller.LoginController;
 import gui.utils.RandomPass;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
 import javax.swing.*;
 
 
@@ -19,12 +14,12 @@ import javax.swing.*;
  *
  * @author Alexandru
  */
-public class AdminPanel extends javax.swing.JPanel {
+public class AdministratorPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form AdminPanel
+     * Creates new form AdministratorPanel
      */
-    public AdminPanel(LoginController lcontroller,AdministratorController controller,String loggedUser,AdminMainFrame amf) {
+    public AdministratorPanel(LoginController lcontroller,AdministratorController controller,String loggedUser,AdministratorMainFrame amf) {
         
         t = new Timer(2000, new ActionListener() {
 
@@ -44,6 +39,7 @@ public class AdminPanel extends javax.swing.JPanel {
         this.amf = amf;
         initComponents();
         jLabelGreeting.setText("Buna "+loggedUser);
+        
         //pentru RU:
         jLabelDoneIconRU.setVisible(false);
         jLabelPostOcupat.setVisible(false);
@@ -53,8 +49,7 @@ public class AdminPanel extends javax.swing.JPanel {
         jTextFieldSpecializareDoctorand.setVisible(false);
         jTableRU.setModel(commonController.getResursaUmanaTableModel());
         
-        
-        
+
         //pentru RL
         jLabelDoneIconRL.setVisible(false);
         jTextFieldCodSalaRL.setEditable(false);
@@ -207,6 +202,11 @@ public class AdminPanel extends javax.swing.JPanel {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableRU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableRUMouseClicked(evt);
             }
         });
         jScrollPaneRU.setViewportView(jTableRU);
@@ -639,9 +639,6 @@ public class AdminPanel extends javax.swing.JPanel {
         jScrollPane7.setViewportView(jTableSali);
 
         jButtonAdaugaRL.setText("Adauga");
-        jButtonAdaugaRL.setMaximumSize(new java.awt.Dimension(69, 23));
-        jButtonAdaugaRL.setMinimumSize(new java.awt.Dimension(69, 23));
-        jButtonAdaugaRL.setPreferredSize(new java.awt.Dimension(69, 23));
         jButtonAdaugaRL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAdaugaRLActionPerformed(evt);
@@ -736,7 +733,7 @@ public class AdminPanel extends javax.swing.JPanel {
                         .addComponent(jLabelDoneIconRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelRLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonAdaugaRL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAdaugaRL)
                             .addComponent(jButtonGolesteCampuriRL))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
@@ -936,6 +933,23 @@ public class AdminPanel extends javax.swing.JPanel {
         this.clearFieldsRL();
     }//GEN-LAST:event_jButtonGolesteCampuriRLActionPerformed
 
+    private void jTableRUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRUMouseClicked
+        int row = jTableRU.getSelectedRow();
+        this.jTextFieldNume.setText(jTableRU.getValueAt(row, 0).toString());
+        this.jTextFieldPrenume.setText(jTableRU.getValueAt(row, 1).toString());
+        this.jTextFieldTelefon.setText(jTableRU.getValueAt(row, 2).toString());
+        this.jTextFieldEmail.setText(jTableRU.getValueAt(row, 3).toString());
+        this.jTextFieldInterese.setText(jTableRU.getValueAt(row, 4).toString());
+        if(jTableRU.getValueAt(row, 5).toString().equals("Cadru didactic"))
+            jRadioButtonCadruDidactic.setSelected(true);
+        if(jTableRU.getValueAt(row, 5).toString().equals("Cercetator"))
+            jRadioButtonCercetator.setSelected(true);
+        if(jTableRU.getValueAt(row, 5).toString().equals("Doctorand"))
+            jRadioButtonDoctorand.setSelected(true);
+        if(jTableRU.getValueAt(row, 5).toString().equals("Personal administrativ"))
+            jRadioButtonPersonalAdministrativ.setSelected(true);
+    }//GEN-LAST:event_jTableRUMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupRL;
     private javax.swing.ButtonGroup buttonGroupRU;
@@ -1006,7 +1020,7 @@ public class AdminPanel extends javax.swing.JPanel {
     private AdministratorController controller;
     private LoginController loginController;
     private String loggedUser;
-    private AdminMainFrame amf;
+    private AdministratorMainFrame amf;
     private RandomPass generator;
     private CommonController commonController;
     private Timer t;

@@ -9,16 +9,16 @@ import java.awt.*;
  * Date: 4/10/13
  * Time: 3:36 PM
  */
-public class AdminMainFrame extends JFrame {
+public class AdministratorMainFrame extends JFrame {
     private AdministratorController controller;
     private LoginController loginController;
     public JPanel adminPanel;  
 
-    public AdminMainFrame(LoginController loginController,AdministratorController aController, String userName){
+    public AdministratorMainFrame(LoginController loginController,AdministratorController aController, String userName){
         setTitle("RMS - Administrator mode");
         this.controller = aController;
         this.loginController = loginController;
-        this.adminPanel = new AdminPanel(loginController,controller,userName,this);
+        this.adminPanel = new AdministratorPanel(loginController,controller,userName,this);
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(850, 550);
