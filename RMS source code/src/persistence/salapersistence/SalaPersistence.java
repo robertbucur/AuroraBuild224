@@ -1,10 +1,9 @@
 package persistence.salapersistence;
 
-import java.util.List;
-
+import model.Sala;
 import persistence.Persistence;
 
-import model.Sala;
+import java.util.List;
 
 /**
  * Contine metode de modificare sau de primire de informatii a salilor din
@@ -95,8 +94,8 @@ public class SalaPersistence extends Persistence{
 	 * @return
 	 * @since version 1.0
 	 */
-	public List<Sala> getAllSali() {
-		return SalaFactory.getAllSali(factory);
+	public List<Sala> getAllSala() {
+		return SalaFactory.getAllSala(factory);
 	}
 
 	

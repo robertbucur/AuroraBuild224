@@ -112,9 +112,8 @@ public class CommonControllerTest {
     public void getAllResursaUmana() {
         List<ResursaUmana> list = commonController.getAllResursaUmana();
 
-        assertEquals(2, list.size());
-        assertEquals("cosmin@gmail.com", list.get(0).getEmail());
-        assertEquals("cristi@gmail.com", list.get(1).getEmail());
+        assertEquals("cosmin@gmail.com", list.get(list.size()-2).getEmail());
+        assertEquals("cristi@gmail.com", list.get(list.size()-1).getEmail());
         assertTrue(list.get(0) instanceof CadruDidactic);
     }
 
@@ -122,17 +121,15 @@ public class CommonControllerTest {
     public void getAllEchipament() {
         List<Echipament> list = commonController.getAllEchipament();
 
-        assertEquals(2, list.size());
-        assertEquals("Imprimanta", list.get(0).getTip());
-        assertEquals("Canon EOS 5D Mark III", list.get(1).getModel());
+        assertEquals("Imprimanta", list.get(list.size()-2).getTip());
+        assertEquals("Canon EOS 5D Mark III", list.get(list.size()-1).getModel());
     }
 
     @Test
     public void getAllSala() {
         List<Sala> list = commonController.getAllSala();
 
-        assertEquals(2, list.size());
-        assertEquals("21", list.get(0).getCodSala());
-        assertEquals(1337, list.get(1).getNrLocuri());
+        assertEquals("21", list.get(list.size()-2).getCodSala());
+        assertEquals(1337, list.get(list.size()-1).getNrLocuri());
     }
 }

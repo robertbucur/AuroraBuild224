@@ -1,16 +1,10 @@
 package persistence.salapersistence;
 
-import java.util.List;
-
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import model.Sala;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 
-import model.Echipament;
-import model.Sala;
+import java.util.List;
 
 /**
  * Ofera metode pentru interogarea persistentei, pentru cerere de informatii.
@@ -33,7 +27,7 @@ public class SalaFactory {
 	 *         <code>null</code>
 	 * @since version 1.0
 	 */
-	static List<Sala> getAllSali(SessionFactory factory) {
+	static List<Sala> getAllSala(SessionFactory factory) {
 		List<Sala> result = null;
 
 		try {
