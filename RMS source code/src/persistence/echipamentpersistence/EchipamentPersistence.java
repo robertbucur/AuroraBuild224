@@ -55,10 +55,8 @@ public class EchipamentPersistence extends Persistence{
 	 * @since version 1.0
 	 */
 	
-	public boolean save(Echipament echipament) {
-		int ok = EchipamentRepository.save(factory, echipament);
-
-		return (ok == 0) ? false : true;
+	public int save(Echipament echipament) {
+		return EchipamentRepository.save(factory, echipament);
 	}
 
 
