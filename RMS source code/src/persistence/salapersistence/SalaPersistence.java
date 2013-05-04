@@ -3,10 +3,7 @@ package persistence.salapersistence;
 import java.util.List;
 
 import persistence.Persistence;
-import persistence.echipamentpersistence.EchipamentPersistence;
-import persistence.echipamentpersistence.EchipamentRepository;
 
-import model.Echipament;
 import model.Sala;
 
 /**
@@ -52,10 +49,9 @@ public class SalaPersistence extends Persistence{
 	 *            Sala ce se doreste a fi salvat
 	 * @since version 1.0
 	 */
-	public boolean save(Sala sala) {
-		int ok = SalaRepository.save(factory, sala);
+	public int save(Sala sala) {
+		return SalaRepository.save(factory, sala);
 
-		return (ok == 0) ? false : true;
 	}
 
 
@@ -89,6 +85,20 @@ public class SalaPersistence extends Persistence{
 
 		return (ok == 0) ? false : true;
 	}
+	
+	
+	
+	/**
+	 * Metoda intoarce toate salile daca exista,
+	 * altfel <code>null</code>.
+	 * 
+	 * @return
+	 * @since version 1.0
+	 */
+	public List<Sala> getAllSali() {
+		return SalaFactory.getAllSali(factory);
+	}
+
 	
 
 	/**
