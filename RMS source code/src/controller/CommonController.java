@@ -1,8 +1,14 @@
 package controller;
 
+import controller.tablemodel.EchipamentTableModel;
 import controller.tablemodel.ResursaUmanaTableModel;
+import controller.tablemodel.SalaTableModel;
+import model.Echipament;
 import model.ResursaUmana;
+import model.Sala;
 import persistence.cadrudidacticpersistence.CadruDidacticPersistence;
+import persistence.echipamentpersistence.EchipamentPersistence;
+import persistence.salapersistence.SalaPersistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +22,21 @@ import java.util.List;
  */
 public class CommonController {
     private CadruDidacticPersistence cadruDidacticPersistence;
+    private EchipamentPersistence echipamentPersistence;
+    private SalaPersistence salaPersistence;
+
     private ResursaUmanaTableModel resursaUmanaTableModel;
+    private EchipamentTableModel echipamentTableModel;
+    private SalaTableModel salaTableModel;
 
     public CommonController() {
         cadruDidacticPersistence = CadruDidacticPersistence.instance();
+        echipamentPersistence = EchipamentPersistence.instance();
+        salaPersistence = SalaPersistence.instance();
+
         resursaUmanaTableModel = new ResursaUmanaTableModel(getAllResursaUmana());
+        echipamentTableModel = new EchipamentTableModel(getAllEchipament());
+        salaTableModel = new SalaTableModel(getAllSala());
     }
 
     /**
@@ -46,12 +62,66 @@ public class CommonController {
     }
 
     /**
-     * Reface modelul cu datele din BD
+     * Reface modelul pentru <code>ResursaUmanaTableModel</code> cu datele din BD
      */
     public void updateResursaUmanaTableModel() {
         List<ResursaUmana> list = resursaUmanaTableModel.getList();
         list.clear();
         list.addAll(getAllResursaUmana());
         resursaUmanaTableModel.fireTableDataChanged();
+    }
+
+    /**
+     * Formeaza o lista cu toate obiectele de tip <code>Echipament</code>.
+     *
+     * @return lista cu obiectele de tip Echipament
+     */
+    public List<Echipament> getAllEchipament() {
+        return echipamentPersistence.getAllEchipament();
+    }
+
+    /**
+     * Returneaza <code>EchipamentTableModel</code>
+     * @return
+     */
+    public EchipamentTableModel getEchipamentTableModel() {
+        return echipamentTableModel;
+    }
+
+    /**
+     * Reface modelul pentru <code>EchipamentTableModel</code> cu datele din BD
+     */
+    public void updateEchipamentTableModel() {
+        List<Echipament> list = echipamentTableModel.getList();
+        list.clear();
+        list.addAll(getAllEchipament());
+        echipamentTableModel.fireTableDataChanged();
+    }
+
+    /**
+     * Formeaza o lista cu toate obiectele de tip <code>Sala</code>.
+     *
+     * @return lista cu obiectele de tip Echipament
+     */
+    public List<Sala> getAllSala() {
+        return salaPersistence.getAllSala();
+    }
+
+    /**
+     * Returneaza <code>SalaTableModel</code>
+     * @return
+     */
+    public SalaTableModel getSalaTableModel() {
+        return salaTableModel;
+    }
+
+    /**
+     * Reface modelul pentru <code>SalaTableModel</code> cu datele din BD
+     */
+    public void updateSalaTableModel() {
+        List<Sala> list = salaTableModel.getList();
+        list.clear();
+        list.addAll(getAllSala());
+        salaTableModel.fireTableDataChanged();
     }
 }

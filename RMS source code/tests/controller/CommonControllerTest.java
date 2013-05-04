@@ -1,12 +1,12 @@
 package controller;
 
-import model.CadruDidactic;
-import model.Norma;
-import model.ResursaUmana;
+import model.*;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import persistence.cadrudidacticpersistence.CadruDidacticPersistence;
+import persistence.echipamentpersistence.EchipamentPersistence;
+import persistence.salapersistence.SalaPersistence;
 
 import java.util.List;
 
@@ -20,15 +20,25 @@ import static org.junit.Assert.assertTrue;
  */
 public class CommonControllerTest {
     private static CadruDidacticPersistence cadruDidacticPersistence;
+    private static EchipamentPersistence echipamentPersistence;
+    private static SalaPersistence salaPersistence;
     private static CommonController commonController;
     private static CadruDidactic cd1;
     private static CadruDidactic cd2;
+    private static Echipament ech1;
+    private static Echipament ech2;
+    private static Sala sala1;
+    private static Sala sala2;
 
     @BeforeClass
     public static void initialize() {
         cadruDidacticPersistence = CadruDidacticPersistence.instance();
+        echipamentPersistence = EchipamentPersistence.instance();
         commonController = new CommonController();
 
+        /***************************************
+             CadruDidactic
+         **************************************/
         cd1 = new CadruDidactic();
         cd1.setNume("Mihu");
         cd1.setPrenume("Cosmin");
@@ -54,12 +64,48 @@ public class CommonControllerTest {
         cd1.setId(id);
         id = cadruDidacticPersistence.save(cd2);
         cd2.setId(id);
+
+        /***************************************
+            Echipament
+         **************************************/
+        ech1 = new Echipament();
+        ech1.setTip("Imprimanta");
+        ech1.setModel("Epson 2");
+
+        ech2 = new Echipament();
+        ech2.setTip("Camera foto");
+        ech2.setModel("Canon EOS 5D Mark III");
+
+        id = echipamentPersistence.save(ech1);
+        ech1.setId(id);
+        id = echipamentPersistence.save(ech2);
+        ech2.setId(id);
+
+        /***************************************
+             Sala
+         **************************************/
+        sala1 = new Sala();
+        sala1.setCodSala("21");
+        sala1.setNrLocuri(30);
+
+        sala2 = new Sala();
+        sala2.setCodSala("C4");
+        sala2.setNrLocuri(1337);
+
+        id = salaPersistence.save(sala1);
+        sala1.setId(id);
+        id = salaPersistence.save(sala2);
+        sala2.setId(id);
     }
 
     @AfterClass
     public static void cleanUp() {
         cadruDidacticPersistence.delete(cd1);
         cadruDidacticPersistence.delete(cd2);
+        echipamentPersistence.delete(ech1);
+        echipamentPersistence.delete(ech2);
+        salaPersistence.delete(sala1);
+        salaPersistence.delete(sala2);
     }
 
     @Test
@@ -70,5 +116,23 @@ public class CommonControllerTest {
         assertEquals("cosmin@gmail.com", list.get(0).getEmail());
         assertEquals("cristi@gmail.com", list.get(1).getEmail());
         assertTrue(list.get(0) instanceof CadruDidactic);
+    }
+
+    @Test
+    public void getAllEchipament() {
+        List<Echipament> list = commonController.getAllEchipament();
+
+        assertEquals(2, list.size());
+        assertEquals("Imprimanta", list.get(0).getTip());
+        assertEquals("Canon EOS 5D Mark III", list.get(1).getModel());
+    }
+
+    @Test
+    public void getAllSala() {
+        List<Sala> list = commonController.getAllSala();
+
+        assertEquals(2, list.size());
+        assertEquals("21", list.get(0).getCodSala());
+        assertEquals(1337, list.get(1).getNrLocuri());
     }
 }
