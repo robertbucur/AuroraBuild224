@@ -34,6 +34,7 @@ public class CommonControllerTest {
     public static void initialize() {
         cadruDidacticPersistence = CadruDidacticPersistence.instance();
         echipamentPersistence = EchipamentPersistence.instance();
+        salaPersistence = SalaPersistence.instance();
         commonController = new CommonController();
 
         /***************************************
